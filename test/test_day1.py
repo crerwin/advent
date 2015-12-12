@@ -1,6 +1,7 @@
 import unittest
 import day1
 
+
 class WalkTestCase(unittest.TestCase):
     def test_walk_case_1(self):
         result = day1.walk("(())")
