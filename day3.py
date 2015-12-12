@@ -6,6 +6,26 @@ class Coordinates():
     y = 0
 
 
+class Deliverer():
+    coords = Coordinates()
+
+    def __init__(self):
+        self.coords.x = 0
+        self.coords.y = 0
+
+    def moveup(self):
+        self.coords.y += 1
+
+    def movedown(self):
+        self.coords.y -= 1
+
+    def moveright(self):
+        self.coords.x += 1
+
+    def moveleft(self):
+        self.coords.x -= 1
+
+
 def textonly(inputfilename):
     file = open(inputfilename)
     content = file.read()
@@ -19,32 +39,31 @@ def walk(content):
         # string is empty
         return 0
     else:
-        coords = Coordinates()
-        visitedhousesdict = {(coords.x, coords.y): 1}
+        Santa = Deliverer()
+        visitedhousesdict = {(Santa.coords.x, Santa.coords.y): 1}
         for char in content:
             try:
-                coords = adjustcoords(coords, char)
+                moveperson(Santa, char)
                 # maybe defaultdict is better here?
-                if (coords.x, coords.y) in visitedhousesdict:
+                if (Santa.coords.x, Santa.coords.y) in visitedhousesdict:
                     # have we been to this house?  then increment
-                    visitedhousesdict[(coords.x, coords.y)] += 1
+                    visitedhousesdict[(Santa.coords.x, Santa.coords.y)] += 1
                 else:
                     # add a newly visited house to the list
-                    visitedhousesdict[(coords.x, coords.y)] = 1
+                    visitedhousesdict[(Santa.coords.x, Santa.coords.y)] = 1
             except ValueError:
                 raise
     return len(visitedhousesdict)
 
 
-def adjustcoords(coords, char):
+def moveperson(person, char):
     if char == ">":
-        coords.x += 1
+        person.moveright()
     elif char == "<":
-        coords.x -= 1
+        person.moveleft()
     elif char == "^":
-        coords.y += 1
+        person.moveup()
     elif char == "v":
-        coords.y -= 1
+        person.movedown()
     else:
         raise ValueError('bad character found')
-    return coords
