@@ -5,7 +5,8 @@ def textonly(inputfilename):
     file = open(inputfilename)
     content = file.read()
     result = checklines(content)
-    return "Nice lines: " + str(result)
+    result2 = checklines(content, "part2")
+    return "Nice lines: " + str(result) + " part 2 Nice lines: " + str(result2)
 
 def criteria1(input):
     vowels = ['a', 'e', 'i', 'o', 'u']
@@ -36,14 +37,37 @@ def criteria3(input):
     return True
 
 
-def isnice(input):
-    return criteria1(input) and criteria2(input) and criteria3(input)
+def criteria4(input):
+    listofstringpairs = []
+    for char1, char2 in zip(input[::1], input[1::1]):
+        tempstring = char1 + char2
+        if tempstring in listofstringpairs[0:len(listofstringpairs)-1]:
+            return True
+        else:
+            listofstringpairs.append(tempstring)
+    return False
 
 
-def checklines(content):
+def criteria5(input):
+    for char1, char2, char3 in zip(input[::1], input[1::1], input[2::1]):
+        if char1 == char3:
+            return True
+    return False
+
+
+def isnice(input, part="part1"):
+    if part == "part1":
+        return criteria1(input) and criteria2(input) and criteria3(input)
+    elif part == "part2":
+        return criteria4(input) and criteria5(input)
+    else:
+        return False
+
+
+def checklines(content, part="part1"):
     nicelines = 0
     for line in content.splitlines():
-        if isnice(line):
+        if isnice(line, part):
             nicelines += 1
     return nicelines
 

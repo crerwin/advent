@@ -59,3 +59,46 @@ class IsNiceCase(unittest.TestCase):
 
     def test_isnice_case_5(self):
         self.assertEquals(day5.isnice("dvszwmarrgswjxmb"), False)
+
+
+class Criteria4Case(unittest.TestCase):
+    def test_criteria4_case_1(self):
+        self.assertEquals(day5.criteria4("xyxy"), True)
+
+    def test_criteria4_case_2(self):
+        self.assertEquals(day5.criteria4("aabcdefgaa"), True)
+
+    def test_criteria4_case_3(self):
+        self.assertEquals(day5.criteria4("aaa"), False)
+
+    def test_criteria4_case_4(self):
+        self.assertEquals(day5.criteria4("xxyxx"), True)
+
+
+class Criteria5Case(unittest.TestCase):
+    def test_criteria5_case_1(self):
+        self.assertEquals(day5.criteria5("xyx"), True)
+
+    def test_criteria5_case_2(self):
+        self.assertEquals(day5.criteria5("abcdefeghi"), True)
+
+    def test_criteria5_case_3(self):
+        self.assertEquals(day5.criteria5("aaa"), True)
+
+    def test_criteria5_case_4(self):
+        self.assertEquals(day5.criteria5("xxyxx"), True)
+
+
+
+class IsNicePart2Case(unittest.TestCase):
+    def test_isnice_part2_case_1(self):
+        self.assertEquals(day5.isnice("qjhvhtzxzqqjkmpb", "part2"), True)
+
+    def test_isnice_part2_case_2(self):
+        self.assertEquals(day5.isnice("xxyxx", "part2"), True)
+
+    def test_isnice_part2_case_3(self):
+        self.assertEquals(day5.isnice("uurcxstgmygtbstg", "part2"), False)
+
+    def test_isnice_part2_case_4(self):
+        self.assertEquals(day5.isnice("ieodomkazucvgmuy", "part2"), False)
