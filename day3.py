@@ -6,7 +6,7 @@ class Coordinates():
     y = 0
 
 
-class Deliverer():
+class Person():
     coords = Coordinates()
 
     def __init__(self):
@@ -39,7 +39,7 @@ def walk(content):
         # string is empty
         return 0
     else:
-        Santa = Deliverer()
+        Santa = Person()
         visitedhousesdict = {(Santa.coords.x, Santa.coords.y): 1}
         for char in content:
             try:
