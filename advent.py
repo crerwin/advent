@@ -3,6 +3,7 @@ import day1
 import day2
 import day3
 import day4
+import day5
 
 
 def makefilepath(filename):
@@ -28,4 +29,9 @@ def execday4():
     key = "ckczppom"
     print(day4.textonly(key))
 
-execday4()
+
+def execday5():
+    inputfilename = makefilepath("day5input.txt")
+    print(day5.textonly(inputfilename))
+
+execday5()
