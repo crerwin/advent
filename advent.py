@@ -38,6 +38,6 @@ def execday5():
 
 def execday6():
     inputfilename = makefilepath("day6input.txt")
-    day6.textonly(inputfilename)
+    print(day6.textonly(inputfilename))
 
 execday6()
