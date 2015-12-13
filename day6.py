@@ -1,5 +1,6 @@
 #module day6
 
+
 class LightArray():
     def __init__(self):
         self.lights = [[False for i in range(1000)] for i in range(1000)]
@@ -38,35 +39,49 @@ class LightArray():
         return litcount
 
 
-class Part2Array():
+class Part2Array(LightArray):
     def __init__(self):
         self.brightness = 0
+        self.lights = [[0 for i in range(1000)] for i in range(1000)]
 
-    def adjust_brightness(self, operation, x1, y1, x2, y2):
-        count = (x2 - x1 + 1) * (y2 - y1 + 1)
-        if operation == "on":
-            self.brightness += count
-        elif operation == "off":
-            self.brightness -= count
-        elif operation == "toggle":
-            self.brightness += 2 * count
-        else:
-            raise ValueError('bad value for operation')
-        print(self.brightness)
+    def turnon(self, x1, y1, x2, y2):
+        for x in range(x1, x2 + 1):
+            for y in range(y1, y2 + 1):
+                self.lights[x][y] +=1
+
+    def turnoff(self, x1, y1, x2, y2):
+        for x in range(x1, x2 + 1):
+            for y in range(y1, y2 + 1):
+                if self.lights[x][y] > 0:
+                    self.lights[x][y] -= 1
+
+    def toggle(self, x1, y1, x2, y2):
+        for x in range(x1, x2 + 1):
+            for y in range (y1, y2 + 1):
+                self.lights[x][y] += 2
+
+    def get_brightness(self):
+        brightness = 0
+        for x in range(0, 1000):
+            for y in range(0, 1000):
+                brightness += self.lights[x][y]
+        return brightness
+
 
 def textonly(inputfilename):
     griswold = LightArray()
     griswold2 = Part2Array()
     file = open(inputfilename)
     content = file.read()
-    #for line in content.splitlines():
-    #    result = parseline(line)
-    #    griswold.act(*result)
     for line in content.splitlines():
         result = parseline(line)
-        griswold2.adjust_brightness(*result)
+        griswold.act(*result)
+    for line in content.splitlines():
+        result = parseline(line)
+        griswold2.act(*result)
+    stringresult = "Lights lit (part 1): " + str(griswold.get_lit_count()) + " Brightness (part 2): " + str(griswold2.get_brightness())
+    return stringresult
 
-    return str(griswold.get_lit_count())
 
 def parseline(input):
     words = input.split(" ")
@@ -80,6 +95,5 @@ def parseline(input):
         x2, y2 = words[4].split(",")
     else:
         raise ValueError('bad input line')
-    print(operator, x1, y1, x2, y2)
     return operator, int(x1), int(y1), int(x2), int(y2)
 

@@ -30,3 +30,23 @@ class ActTestCase(unittest.TestCase):
         testarray = day6.LightArray()
         testarray.act(*result)
         self.assertEquals(testarray.get_lit_count(), 4)
+
+
+class Part2TestCase(unittest.TestCase):
+    def test1(self):
+        result = day6.parseline("turn on 0,0 through 0,0")
+        testarray = day6.Part2Array()
+        testarray.act(*result)
+        self.assertEquals(testarray.get_brightness(), 1)
+
+    def test2(self):
+        result = day6.parseline("toggle 0,0 through 999,999")
+        testarray = day6.Part2Array()
+        testarray.act(*result)
+        self.assertEquals(testarray.get_brightness(), 2000000)
+
+    def test3(self):
+        result = day6.parseline("turn off 499,499 through 500,500")
+        testarray = day6.Part2Array()
+        testarray.act(*result)
+        self.assertEquals(testarray.get_brightness(), 0)
