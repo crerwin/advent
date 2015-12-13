@@ -4,6 +4,7 @@ import day2
 import day3
 import day4
 import day5
+import day6
 
 
 def makefilepath(filename):
@@ -34,4 +35,9 @@ def execday5():
     inputfilename = makefilepath("day5input.txt")
     print(day5.textonly(inputfilename))
 
-execday5()
+
+def execday6():
+    inputfilename = makefilepath("day6input.txt")
+    day6.textonly(inputfilename)
+
+execday6()
