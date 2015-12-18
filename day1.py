@@ -1,4 +1,4 @@
-#module day1.py
+# module day1.py
 
 def textonly(inputfilename):
     file = open(inputfilename)
