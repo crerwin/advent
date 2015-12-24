@@ -111,9 +111,46 @@ class BreadBoardTestCase(unittest.TestCase):
 
 
 class CreateComponentTestCase(unittest.TestCase):
+    def setUp(self):
+        self.breadboard = day7.BreadBoard()
+        self.parseAndAdd("123 -> x")
+        self.parseAndAdd("456 -> y")
+        self.parseAndAdd("x AND y -> d")
+        self.parseAndAdd("x OR y -> e")
+        self.parseAndAdd("x LSHIFT 2 -> f")
+        self.parseAndAdd("y RSHIFT 2 -> g")
+        self.parseAndAdd("NOT x -> h")
+        self.parseAndAdd("NOT y -> i")
+
+    def parseAndAdd(self, string_to_parse):
+        self.breadboard.add_components(*day7.parseline(string_to_parse))
+
     def test_1(self):
-        breadboard = day7.BreadBoard()
-        result = day7.parseline("123 -> x")
-        breadboard.add_components(result)
-        self.assertEquals(breadboard.get_component('x').output, 123)
+        self.assertEquals(self.breadboard.get_component('d').output, 72)
+
+    def test_2(self):
+        self.assertEquals(self.breadboard.get_component('e').output, 507)
+
+    def test_3(self):
+        self.assertEquals(self.breadboard.get_component('f').output, 492)
+
+    def test_4(self):
+        self.assertEquals(self.breadboard.get_component('g').output, 114)
+
+    def test_5(self):
+        self.assertEquals(self.breadboard.get_component('h').output, 65412)
+
+    def test_6(self):
+        self.assertEquals(self.breadboard.get_component('i').output, 65079)
+
+    def test_7(self):
+        self.assertEquals(self.breadboard.get_component('x').output, 123)
+
+    def test_8(self):
+        self.assertEquals(self.breadboard.get_component('y').output, 456)
+
+
+
+
+
 

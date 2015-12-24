@@ -63,7 +63,7 @@ class ShiftGate(Gate):
     def __init__(self, direction, amount, input_connection = None):
         Gate.__init__(self, input_connection)
         self.direction = direction
-        self.amount = amount
+        self.amount = int(amount)
 
     def _get_output(self):
         if self.direction == "left":
@@ -123,15 +123,27 @@ class BreadBoard():
         # will replace a component if it exists!
         self.components[key] = component
 
-    def add_components(self, *args):
+    def add_components(self, *results):
         # takes in a tuple and adds the specified components
-        results = args[0] # it's putting my tuple into a tuple and I'm not sure why
         if results[0] == "power":
             self.add_component(PowerSource(results[1]), results[2] + "_power")
             self.add_component(self._get_or_create_wire(results[2], self.get_component(results[2] + "_power")), results[2])
-        if results[0] == "not":
+        elif results[0] == "wire_to_wire":
+            self.add_component(self._get_or_create_wire(results[2], self._get_or_create_wire(results[0])), results[2])
+        elif results[0] == "not":
             self.add_component(NotGate(self._get_or_create_wire(results[1])), results[1] + "_not")
-            self.add_component(self._get_or_create_wire(results[2], self.get_component(results[1] + "_not")))
+            self.add_component(self._get_or_create_wire(results[2], self.get_component(results[1] + "_not")), results[2])
+        elif results[0] == "and":
+            self.add_component(AndGate(self._get_or_create_wire(results[1]), self._get_or_create_wire(results[2])), results[1] + "_and")
+            self.add_component(self._get_or_create_wire(results[3], self.get_component(results[1] + "_and")), results[3])
+        elif results[0] == "or":
+            self.add_component(OrGate(self._get_or_create_wire(results[1]), self._get_or_create_wire(results[2])), results[1] + "_and")
+            self.add_component(self._get_or_create_wire(results[3], self.get_component(results[1] + "_and")), results[3])
+        elif results[0] == "shift":
+            self.add_component(ShiftGate(results[1], results[3], self._get_or_create_wire(results[2])), results[2] + "_shift_" + results[1])
+            self.add_component(self._get_or_create_wire(results[4], self.get_component(results[2] + "_shift_" + results[1])), results[4])
+        else:
+            raise ValueError("bad input")
 
     def get_component(self, key):
         return self.components[key]
@@ -150,7 +162,10 @@ class BreadBoard():
 def parseline(line):
     words = line.split(" ")
     if len(words) == 3:
-        return ("power", words[0], words[2])
+        if is_number(words[0]):
+            return "power", words[0], words[2]
+        else:
+            return "wire_to_wire", words[0], words[2]
     elif len(words) == 4:
         return "not", words[1], words[3]
     elif len(words) == 5:
@@ -166,4 +181,23 @@ def parseline(line):
             raise ValueError('bad operator input')
     else:
         raise ValueError('bad line')
+
+
+def is_number(string):
+    try:
+        int(string)
+        return True
+    except ValueError:
+        return False
+
+
+def textonly(inputfilename):
+    breadboard = BreadBoard()
+    file = open(inputfilename)
+    content = file.read()
+    for line in content.splitlines():
+        results = parseline(line)
+        breadboard.add_components(*results)
+    print("breadboard loaded")
+    return breadboard.get_component('a').output
 
