@@ -1,5 +1,5 @@
 import unittest
-import day6
+from ..days import day6
 
 
 class ParseLineTestCase(unittest.TestCase):

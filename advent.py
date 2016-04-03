@@ -4,9 +4,10 @@ import day2
 import day3
 import day4
 import day5
-import day6
+#import day6
 import day7
 import day8
+import day10
 
 
 def makefilepath(filename):
@@ -42,12 +43,17 @@ def execday6():
     inputfilename = makefilepath("day6input.txt")
     print(day6.textonly(inputfilename))
 
+
 def execday7():
     inputfilename = makefilepath("day7input.txt")
     print(day7.textonly(inputfilename))
+
 
 def execday8():
     inputfilename = makefilepath("day8input.txt")
     print(day8.textonly(inputfilename))
 
-execday8()
+def execday10():
+    print(len(day10.iterate("3113322113", 50)))
+
+execday10()
