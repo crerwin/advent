@@ -18,15 +18,31 @@ class password():
             return chr(ord(input) + 1)
 
     def increment_password(self):
-        currchar = 7
-        self.password_value[currchar] = self.increment_character(chr(self.password_value[currchar]))
+        if self.password_value == "zzzzzzzz":
+            self.password_value = "aaaaaaaa"
+        else:
+            templist = list(self.password_value)
+            for currchar in range(len(templist) - 1, 0, -1):
+                tempchar = self.increment_character(chr(ord(self.password_value[currchar])))
+                if tempchar != "a":
+                    templist[currchar] = tempchar
+                    break
+                else:
+                    templist[currchar] = tempchar
+            self.password_value = ''.join(templist)
+
+    def find_next_password(self):
+        self.increment_password()
+        while not self.is_valid():
+            self.increment_password()
+
 
     def meets_requirement_1(self):
         prev_char = ""
         run_count = 1
         for char in self.password_value:
             if prev_char != "":
-                if self.increment_character(prev_char) == char:
+                if self.increment_character(prev_char) == char and prev_char != "z":
                     run_count += 1
                 else:
                     run_count = 1

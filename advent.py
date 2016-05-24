@@ -1,13 +1,14 @@
 import os
-import day1
-import day2
-import day3
-import day4
-import day5
-#import day6
-import day7
-import day8
-import day10
+# import day1
+# import day2
+# import day3
+# import day4
+# import day5
+# #import day6
+# import day7
+# import day8
+# import day10
+from days import day11
 
 
 def makefilepath(filename):
@@ -53,7 +54,16 @@ def execday8():
     inputfilename = makefilepath("day8input.txt")
     print(day8.textonly(inputfilename))
 
+
 def execday10():
     print(len(day10.iterate("3113322113", 50)))
 
-execday10()
+
+def execday11():
+    pw = day11.password("vzbxkghb")
+    pw.find_next_password()
+    print(pw.get_password())
+    pw.find_next_password()
+    print(pw.get_password())
+
+execday11()

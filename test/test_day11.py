@@ -56,6 +56,14 @@ class PasswordTestCase(unittest.TestCase):
         self.test_password = day11.password("abbcegjk")
         self.assertEqual(False, self.test_password.is_valid())
 
+    def test_is_valid_2(self):
+        self.test_password = day11.password("abcdffaa")
+        self.assertEqual(True, self.test_password.is_valid())
+
+    def test_is_valid_3(self):
+        self.test_password = day11.password("ghjaabcc")
+        self.assertEqual(True, self.test_password.is_valid())
+
     def test_increment_character_1(self):
         self.test_password = day11.password("aaaaaaaa")
         self.assertEqual("b", self.test_password.increment_character("a"))
@@ -65,4 +73,29 @@ class PasswordTestCase(unittest.TestCase):
     def test_increment_password_1(self):
         self.test_password = day11.password("aaaaaaaa")
         self.test_password.increment_password()
-        self.assertEqual("aaaaaaab", self.test_password.get_password)
+        self.assertEqual("aaaaaaab", self.test_password.get_password())
+
+    def test_increment_password_2(self):
+        self.test_password = day11.password("aaaaaaaz")
+        self.test_password.increment_password()
+        self.assertEqual("aaaaaaba", self.test_password.get_password())
+
+    def test_increment_password_3(self):
+        self.test_password = day11.password("zzzzzzzz")
+        self.test_password.increment_password()
+        self.assertEqual("aaaaaaaa", self.test_password.get_password())
+
+    def test_increment_password_4(self):
+        self.test_password = day11.password("aazzaazz")
+        self.test_password.increment_password()
+        self.assertEqual("aazzabaa", self.test_password.get_password())
+
+    def test_find_next_password_1(self):
+        self.test_password = day11.password("abcdefgh")
+        self.test_password.find_next_password()
+        self.assertEqual("abcdffaa", self.test_password.get_password())
+
+    def test_find_next_password_2(self):
+        self.test_password = day11.password("ghijklmn")
+        self.test_password.find_next_password()
+        self.assertEqual("ghjaabcc", self.test_password.get_password())
