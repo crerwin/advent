@@ -1,20 +1,25 @@
-#module day11
+# module day11
+
 
 class password():
     def __init__(self, password_value):
         if len(password_value) == 8:
-            self.password_value = password_value.lowercase
+            self.password_value = password_value.lower()
         else:
             raise ValueError("wrong length password")
 
+    def get_password(self):
+        return self.password_value
 
     def increment_character(self, input):
-        return chr(ord(input) + 1)
+        if input == "z":
+            return "a"
+        else:
+            return chr(ord(input) + 1)
 
-    #def increment_password(self):
-
-
-
+    def increment_password(self):
+        currchar = 7
+        self.password_value[currchar] = self.increment_character(chr(self.password_value[currchar]))
 
     def meets_requirement_1(self):
         prev_char = ""
@@ -54,11 +59,10 @@ class password():
             return False
 
     def is_valid(self):
-        if not self.meets_requirement_1(): #this is the fastest check
+        if not self.meets_requirement_1():  # this is the fastest check
             return False
         if not self.meets_requirement_2():
             return False
         if not self.meets_requirement_3():
             return False
         return True
-

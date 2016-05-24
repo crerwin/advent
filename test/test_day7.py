@@ -1,5 +1,5 @@
 import unittest
-import day7
+from days import day7
 
 
 class WireTestCase(unittest.TestCase):
@@ -148,9 +148,3 @@ class CreateComponentTestCase(unittest.TestCase):
 
     def test_8(self):
         self.assertEquals(self.breadboard.get_component('y').output, 456)
-
-
-
-
-
-
