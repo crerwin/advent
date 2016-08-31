@@ -8,7 +8,7 @@ import os
 # import day7
 # import day8
 # import day10
-from days import day11
+from days import day12
 
 
 def makefilepath(filename):
@@ -65,5 +65,9 @@ def execday11():
     print(pw.get_password())
     pw.find_next_password()
     print(pw.get_password())
+
+
+def execday12():
+    myparser = day12.parser()
 
 execday11()
