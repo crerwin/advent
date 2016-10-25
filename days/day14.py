@@ -1,7 +1,7 @@
 # module day14
 
 
-class reindeer():
+class Reindeer():
     def __init__(self, speed, fly_time, rest_time, name="John Doe"):
         self.name = name
         self.speed = speed
@@ -26,13 +26,29 @@ class reindeer():
 
 
 
-class race():
-    def __init__(self, reindeer1, reindeer2):
-        self.reindeer1 = reindeer1
-        self.reindeer2 = reindeer2
+class Race():
+    def __init__(self, reindeers):
+        self.reindeers = reindeers
 
     def run(self, time):
-        if self.reindeer1.run(time) > self.reindeer2.run(time):
-            return self.reindeer1.name
-        else:
-            return self.reindeer2.name
+        self.reindeers.sort(key=lambda reindeer: reindeer.run(time), reverse=True)
+        return self.reindeers[0].name, self.reindeers[0].run(time)
+
+
+class OfficialRace():
+    # input is small enough that we don't need to read from a file
+
+    def run(self):
+        self.time = 2503
+        self.reindeers = []
+        self.reindeers.append(Reindeer(8, 8, 53, "Vixen"))
+        self.reindeers.append(Reindeer(13, 4, 49, "Blitzen"))
+        self.reindeers.append(Reindeer(20, 7, 132, "Rudolph"))
+        self.reindeers.append(Reindeer(12, 4, 43, "Cupid"))
+        self.reindeers.append(Reindeer(9, 5, 38, "Donner"))
+        self.reindeers.append(Reindeer(10, 4, 37, "Dasher"))
+        self.reindeers.append(Reindeer(3, 37, 76, "Comet"))
+        self.reindeers.append(Reindeer(9, 12, 97, "Prancer"))
+        self.reindeers.append(Reindeer(37, 1, 36, "Dancer"))
+
+        return Race(self.reindeers).run(self.time)

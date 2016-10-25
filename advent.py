@@ -8,7 +8,7 @@ import os
 # import day7
 # import day8
 # import day10
-from days import day12
+from days import day14
 
 
 def makefilepath(filename):
@@ -70,4 +70,9 @@ def execday11():
 def execday12():
     myparser = day12.parser()
 
-execday11()
+
+def execday14():
+    race = day14.OfficialRace()
+    print(race.run())
+
+execday14()
