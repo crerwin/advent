@@ -52,14 +52,14 @@ class ShiftGate(unittest.TestCase):
     def test_left_case_1(self):
         test_power_source = day7.PowerSource()
         test_power_source.power = 123
-        test_shift_gate = day7.ShiftGate("left",2)
+        test_shift_gate = day7.ShiftGate("left", 2)
         test_shift_gate.connect_input(test_power_source)
         self.assertEquals(test_shift_gate.output, 492)
 
     def test_right_case_1(self):
         test_power_source = day7.PowerSource()
         test_power_source.power = 456
-        test_shift_gate = day7.ShiftGate("right",2)
+        test_shift_gate = day7.ShiftGate("right", 2)
         test_shift_gate.connect_input(test_power_source)
         self.assertEquals(test_shift_gate.output, 114)
 
