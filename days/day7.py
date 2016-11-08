@@ -7,7 +7,7 @@ class Component():
 
 
 class PowerSource(Component):
-    def __init__(self, power = 0):
+    def __init__(self, power=0):
         self.power = power
 
     def _get_output(self):
@@ -24,7 +24,7 @@ class PowerSource(Component):
 
 
 class Wire(Component):
-    def __init__(self, input_connection = None):
+    def __init__(self, input_connection=None):
         self.input_connection = input_connection
 
     def connect_input(self, component):
@@ -44,12 +44,12 @@ class Wire(Component):
 
 
 class Gate(Wire):
-    def __init__(self, input_connection = None):
+    def __init__(self, input_connection=None):
         Wire.__init__(self, input_connection)
 
 
 class NotGate(Gate):
-    def __init__(self, input_connection = None):
+    def __init__(self, input_connection=None):
         Gate.__init__(self, input_connection)
 
     def _get_output(self):
@@ -60,7 +60,7 @@ class NotGate(Gate):
 
 
 class ShiftGate(Gate):
-    def __init__(self, direction, amount, input_connection = None):
+    def __init__(self, direction, amount, input_connection=None):
         Gate.__init__(self, input_connection)
         self.direction = direction
         self.amount = int(amount)
@@ -78,7 +78,7 @@ class ShiftGate(Gate):
 
 class TwoConnectionGate(Gate):
     # Parent class for AND and OR
-    def __init__(self, input_connection = None, input_connection2 = None):
+    def __init__(self, input_connection=None, input_connection2=None):
         Gate.__init__(self, input_connection)
         self.input_connection2 = input_connection2
 
@@ -95,7 +95,7 @@ class TwoConnectionGate(Gate):
 
 
 class AndGate(TwoConnectionGate):
-    def __init__(self, input_connection = None, input_connection2 = None):
+    def __init__(self, input_connection=None, input_connection2=None):
         TwoConnectionGate.__init__(self, input_connection, input_connection2)
 
     def _get_output(self):
@@ -105,7 +105,7 @@ class AndGate(TwoConnectionGate):
 
 
 class OrGate(TwoConnectionGate):
-    def __init__(self, input_connection = None, input_connection2 = None):
+    def __init__(self, input_connection=None, input_connection2=None):
         TwoConnectionGate.__init__(self, input_connection, input_connection2)
 
     def _get_output(self):
@@ -115,8 +115,8 @@ class OrGate(TwoConnectionGate):
 
 
 class BreadBoard():
-    def __init__(self, starting_component = None):
-        self.components={}
+    def __init__(self, starting_component=None):
+        self.components = {}
 
     def add_component(self, component, key):
         # adds a new component to the components dictionary
@@ -148,7 +148,7 @@ class BreadBoard():
     def get_component(self, key):
         return self.components[key]
 
-    def _get_or_create_wire(self, key, input_connection = None):
+    def _get_or_create_wire(self, key, input_connection=None):
         # utility function to return a wire if it exists, or create and return it if it doesn't
         if key in self.components:
             if self.get_component(key).input_connection is None:
@@ -200,4 +200,3 @@ def textonly(inputfilename):
         breadboard.add_components(*results)
     print("breadboard loaded")
     return breadboard.get_component('a').output
-
