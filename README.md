@@ -14,3 +14,9 @@ Or on OS X, specify python 3:
 ```
 python3 -m unittest test/test_day14.py
 ```
+
+## Executing
+Specify the day number as the first (and only) argument
+```
+python advent.py 10
+```
