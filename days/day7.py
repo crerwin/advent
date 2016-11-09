@@ -2,7 +2,8 @@
 
 
 class Component():
-    def __init__(self):
+    def __init__(self, name=""):
+        self.name = name
         self.input = 0
 
 
@@ -24,13 +25,15 @@ class PowerSource(Component):
 
 
 class Wire(Component):
-    def __init__(self, input_connection=None):
+    def __init__(self, input_connection=None, name=""):
+        self.name = name
         self.input_connection = input_connection
 
     def connect_input(self, component):
         self.input_connection = component
 
     def _get_output(self):
+        print("getting output of wire:", self.name)
         return int(self.input)
 
     def _get_input(self):
@@ -122,6 +125,7 @@ class BreadBoard():
         # adds a new component to the components dictionary
         # will replace a component if it exists!
         self.components[key] = component
+        self.components[key].name = key
 
     def add_components(self, *results):
         # takes in a tuple and adds the specified components
@@ -129,7 +133,7 @@ class BreadBoard():
             self.add_component(PowerSource(results[1]), results[2] + "_power")
             self.add_component(self._get_or_create_wire(results[2], self.get_component(results[2] + "_power")), results[2])
         elif results[0] == "wire_to_wire":
-            self.add_component(self._get_or_create_wire(results[2], self._get_or_create_wire(results[0])), results[2])
+            self.add_component(self._get_or_create_wire(results[2], self._get_or_create_wire(results[1])), results[2])
         elif results[0] == "not":
             self.add_component(NotGate(self._get_or_create_wire(results[1])), results[1] + "_not")
             self.add_component(self._get_or_create_wire(results[2], self.get_component(results[1] + "_not")), results[2])
@@ -155,7 +159,7 @@ class BreadBoard():
                 self.get_component(key).connect_input(input_connection)
             return self.get_component(key)
         else:
-            self.add_component(Wire(input_connection), key)
+            self.add_component(Wire(input_connection, key), key)
             return self.get_component(key)
 
 
@@ -191,7 +195,7 @@ def is_number(string):
         return False
 
 
-def textonly(inputfilename):
+def load_file(inputfilename):
     breadboard = BreadBoard()
     file = open(inputfilename)
     content = file.read()
@@ -199,4 +203,9 @@ def textonly(inputfilename):
         results = parseline(line)
         breadboard.add_components(*results)
     print("breadboard loaded")
+    return breadboard
+
+
+def textonly(inputfilename):
+    breadboard = load_file(inputfilename)
     return breadboard.get_component('a').output
