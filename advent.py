@@ -57,7 +57,7 @@ class Dispatcher():
         myparser = day12.parser()
 
     def execday14(self):
-        race = day14.OfficialRace()
+        race = day14.Part2Race()
         return race.run()
 
 
