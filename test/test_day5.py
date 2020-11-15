@@ -1,5 +1,5 @@
 import unittest
-from days import day5
+from advent.days import day5
 
 
 class Criteria1Case(unittest.TestCase):

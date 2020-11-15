@@ -1,5 +1,5 @@
 import unittest
-from days import day10
+from advent.days import day10
 
 
 class LookAndSayTestCase(unittest.TestCase):

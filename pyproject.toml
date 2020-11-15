@@ -1,0 +1,12 @@
+[build-system]
+requires = ["poetry>=1.0.10"]
+build-backend = "poetry.masonry.api"
+
+[tool.poetry]
+name = "Advent of Code"
+version = "0.0.1"
+description = "Solutions to Advent of Code: https://adventofcode.com"
+authors = ["Chris Erwin <crerwin@gmail.com>"]
+
+[tool.poetry.dev-dependencies]
+pytest = "*"

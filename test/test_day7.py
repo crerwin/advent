@@ -1,5 +1,5 @@
 import unittest
-from days import day7
+from advent.days import day7
 
 
 class WireTestCase(unittest.TestCase):

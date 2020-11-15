@@ -47,7 +47,7 @@ class SeatingChart():
         self.starting_seat = seat
 
     def get_overall_opinion(self):
-        
+        pass
 
 
 
