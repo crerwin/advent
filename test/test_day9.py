@@ -9,16 +9,16 @@ class GraphTestCase(unittest.TestCase):
         self.cg.add_edge("Philadelphia", "Baltimore", 101)
 
     def test_1(self):
-        self.assertEquals(self.cg.get_distance("Philadelphia", "New York"), 96)
+        self.assertEqual(self.cg.get_distance("Philadelphia", "New York"), 96)
 
     def test_2(self):
-        self.assertEquals(self.cg.get_distance("New York", "Philadelphia"), 96)
+        self.assertEqual(self.cg.get_distance("New York", "Philadelphia"), 96)
 
     def test_3(self):
-        self.assertEquals(self.cg.get_distance("Philadelphia", "Baltimore"), 101)
+        self.assertEqual(self.cg.get_distance("Philadelphia", "Baltimore"), 101)
 
     def test_4(self):
-        self.assertEquals(self.cg.get_distance("Baltimore", "Philadelphia"), 101)
+        self.assertEqual(self.cg.get_distance("Baltimore", "Philadelphia"), 101)
 
     def test_5(self):
-        self.assertEquals(self.cg.get_distance("New York", "Baltimore"), 5)
+        self.assertEqual(self.cg.get_distance("New York", "Baltimore"), 5)

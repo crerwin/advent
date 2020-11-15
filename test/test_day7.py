@@ -5,38 +5,38 @@ from advent.days import day7
 class WireTestCase(unittest.TestCase):
     def test_no_input(self):
         testwire = day7.Wire()
-        self.assertEquals(testwire.output, 0)
+        self.assertEqual(testwire.output, 0)
 
     def test_input(self):
         test_power_source = day7.PowerSource()
         test_power_source.power = 100
         testwire = day7.Wire()
-        self.assertEquals(testwire.output, 0)
+        self.assertEqual(testwire.output, 0)
         testwire.connect_input(test_power_source)
-        self.assertEquals(testwire.output, 100)
+        self.assertEqual(testwire.output, 100)
 
 
 class PowerSourceTestCase(unittest.TestCase):
     def test_no_power(self):
         test_power_source = day7.PowerSource()
         test_power_source.power = 0
-        self.assertEquals(test_power_source.output, 0)
+        self.assertEqual(test_power_source.output, 0)
 
     def test_some_power(self):
         test_power_source = day7.PowerSource()
         test_power_source.power = 100
-        self.assertEquals(test_power_source.output, 100)
+        self.assertEqual(test_power_source.output, 100)
 
     def test_change_power(self):
         test_power_source = day7.PowerSource()
         test_power_source.power = 50
-        self.assertEquals(test_power_source.output, 50)
+        self.assertEqual(test_power_source.output, 50)
         test_power_source.power = 150
-        self.assertEquals(test_power_source.output, 150)
+        self.assertEqual(test_power_source.output, 150)
 
     def test_constructor(self):
         test_power_source = day7.PowerSource(123)
-        self.assertEquals(test_power_source.output, 123)
+        self.assertEqual(test_power_source.output, 123)
 
 
 class NotGateTestCase(unittest.TestCase):
@@ -45,7 +45,7 @@ class NotGateTestCase(unittest.TestCase):
         test_power_source.power = 123
         test_not_gate = day7.NotGate()
         test_not_gate.connect_input(test_power_source)
-        self.assertEquals(test_not_gate.output, 65412)
+        self.assertEqual(test_not_gate.output, 65412)
 
 
 class ShiftGate(unittest.TestCase):
@@ -54,14 +54,14 @@ class ShiftGate(unittest.TestCase):
         test_power_source.power = 123
         test_shift_gate = day7.ShiftGate("left", 2)
         test_shift_gate.connect_input(test_power_source)
-        self.assertEquals(test_shift_gate.output, 492)
+        self.assertEqual(test_shift_gate.output, 492)
 
     def test_right_case_1(self):
         test_power_source = day7.PowerSource()
         test_power_source.power = 456
         test_shift_gate = day7.ShiftGate("right", 2)
         test_shift_gate.connect_input(test_power_source)
-        self.assertEquals(test_shift_gate.output, 114)
+        self.assertEqual(test_shift_gate.output, 114)
 
 
 class AndGate(unittest.TestCase):
@@ -73,7 +73,7 @@ class AndGate(unittest.TestCase):
         test_and_gate = day7.AndGate()
         test_and_gate.connect_input(x)
         test_and_gate.connect_input2(y)
-        self.assertEquals(test_and_gate.output, 72)
+        self.assertEqual(test_and_gate.output, 72)
 
 
 class OrGate(unittest.TestCase):
@@ -85,7 +85,7 @@ class OrGate(unittest.TestCase):
         test_or_gate = day7.OrGate()
         test_or_gate.connect_input(x)
         test_or_gate.connect_input2(y)
-        self.assertEquals(test_or_gate.output, 507)
+        self.assertEqual(test_or_gate.output, 507)
 
 
 class WireToWireTest(unittest.TestCase):
@@ -96,21 +96,21 @@ class WireToWireTest(unittest.TestCase):
         z = day7.Wire()
         y.connect_input(x)
         z.connect_input(y)
-        self.assertEquals(z.output, 123)
+        self.assertEqual(z.output, 123)
 
 
 class ParseTestCase(unittest.TestCase):
     def test_1(self):
-        self.assertEquals(day7.parseline("123 -> x"), ("power", "123", "x"))
+        self.assertEqual(day7.parseline("123 -> x"), ("power", "123", "x"))
 
     def test_2(self):
-        self.assertEquals(day7.parseline("NOT x -> h"), ("not", "x", "h"))
+        self.assertEqual(day7.parseline("NOT x -> h"), ("not", "x", "h"))
 
     def test_3(self):
-        self.assertEquals(day7.parseline("x AND y -> d"), ("and", "x", "y", "d"))
+        self.assertEqual(day7.parseline("x AND y -> d"), ("and", "x", "y", "d"))
 
     def test_4(self):
-        self.assertEquals(day7.parseline("x -> y"), ("wire_to_wire", "x", "y"))
+        self.assertEqual(day7.parseline("x -> y"), ("wire_to_wire", "x", "y"))
 
 
 class BreadBoardTestCase(unittest.TestCase):
@@ -118,12 +118,12 @@ class BreadBoardTestCase(unittest.TestCase):
         breadboard = day7.BreadBoard()
         breadboard.add_component(day7.PowerSource(), "testpowersource")
         breadboard.get_component("testpowersource").power = 123
-        self.assertEquals(breadboard.get_component("testpowersource").output, 123)
+        self.assertEqual(breadboard.get_component("testpowersource").output, 123)
         breadboard.add_component(day7.Wire(), "testwire")
         breadboard.get_component("testwire").connect_input(
             breadboard.get_component("testpowersource")
         )
-        self.assertEquals(breadboard.get_component("testwire").output, 123)
+        self.assertEqual(breadboard.get_component("testwire").output, 123)
 
 
 class CreateComponentTestCase(unittest.TestCase):
@@ -142,28 +142,28 @@ class CreateComponentTestCase(unittest.TestCase):
         self.breadboard.add_components(*day7.parseline(string_to_parse))
 
     def test_1(self):
-        self.assertEquals(self.breadboard.get_component("d").output, 72)
+        self.assertEqual(self.breadboard.get_component("d").output, 72)
 
     def test_2(self):
-        self.assertEquals(self.breadboard.get_component("e").output, 507)
+        self.assertEqual(self.breadboard.get_component("e").output, 507)
 
     def test_3(self):
-        self.assertEquals(self.breadboard.get_component("f").output, 492)
+        self.assertEqual(self.breadboard.get_component("f").output, 492)
 
     def test_4(self):
-        self.assertEquals(self.breadboard.get_component("g").output, 114)
+        self.assertEqual(self.breadboard.get_component("g").output, 114)
 
     def test_5(self):
-        self.assertEquals(self.breadboard.get_component("h").output, 65412)
+        self.assertEqual(self.breadboard.get_component("h").output, 65412)
 
     def test_6(self):
-        self.assertEquals(self.breadboard.get_component("i").output, 65079)
+        self.assertEqual(self.breadboard.get_component("i").output, 65079)
 
     def test_7(self):
-        self.assertEquals(self.breadboard.get_component("x").output, 123)
+        self.assertEqual(self.breadboard.get_component("x").output, 123)
 
     def test_8(self):
-        self.assertEquals(self.breadboard.get_component("y").output, 456)
+        self.assertEqual(self.breadboard.get_component("y").output, 456)
 
 
 class CreateComponentByParsingTestCase(unittest.TestCase):
@@ -186,28 +186,28 @@ class CreateComponentByParsingTestCase(unittest.TestCase):
             self.breadboard.add_components(*results)
 
     def test_1(self):
-        self.assertEquals(self.breadboard.get_component("d").output, 72)
+        self.assertEqual(self.breadboard.get_component("d").output, 72)
 
     def test_2(self):
-        self.assertEquals(self.breadboard.get_component("e").output, 507)
+        self.assertEqual(self.breadboard.get_component("e").output, 507)
 
     def test_3(self):
-        self.assertEquals(self.breadboard.get_component("f").output, 492)
+        self.assertEqual(self.breadboard.get_component("f").output, 492)
 
     def test_4(self):
-        self.assertEquals(self.breadboard.get_component("g").output, 114)
+        self.assertEqual(self.breadboard.get_component("g").output, 114)
 
     def test_5(self):
-        self.assertEquals(self.breadboard.get_component("h").output, 65412)
+        self.assertEqual(self.breadboard.get_component("h").output, 65412)
 
     def test_6(self):
-        self.assertEquals(self.breadboard.get_component("i").output, 65079)
+        self.assertEqual(self.breadboard.get_component("i").output, 65079)
 
     def test_7(self):
-        self.assertEquals(self.breadboard.get_component("x").output, 123)
+        self.assertEqual(self.breadboard.get_component("x").output, 123)
 
     def test_8(self):
-        self.assertEquals(self.breadboard.get_component("y").output, 456)
+        self.assertEqual(self.breadboard.get_component("y").output, 456)
 
 
 class ParsingWireToWireTestCase(unittest.TestCase):
@@ -219,7 +219,7 @@ class ParsingWireToWireTestCase(unittest.TestCase):
             self.breadboard.add_components(*results)
 
     def test_1(self):
-        self.assertEquals(self.breadboard.get_component("y").output, 123)
+        self.assertEqual(self.breadboard.get_component("y").output, 123)
 
 
 class ParsingWireToWireTestCase2(unittest.TestCase):
@@ -239,4 +239,4 @@ class ParsingWireToWireTestCase2(unittest.TestCase):
             self.breadboard.add_components(*results)
 
     def test_1(self):
-        self.assertEquals(self.breadboard.get_component("g").output, 123)
+        self.assertEqual(self.breadboard.get_component("g").output, 123)
