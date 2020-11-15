@@ -1,6 +1,7 @@
 import unittest
 from advent.days import day11
 
+
 class PasswordTestCase(unittest.TestCase):
     def test_rule_1_1(self):
         self.test_password = day11.password("abcddddd")

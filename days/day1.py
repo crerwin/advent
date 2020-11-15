@@ -1,11 +1,18 @@
 # module day1.py
 
+
 def textonly(inputfilename):
     file = open(inputfilename)
     content = file.read()
     result = walk(content)
-    stringresult = "Final floor: " + str(result['floor']) + " Basement entry character: " + str(result['basementchar'])
+    stringresult = (
+        "Final floor: "
+        + str(result["floor"])
+        + " Basement entry character: "
+        + str(result["basementchar"])
+    )
     return stringresult
+
 
 def walk(content):
     floor = 0
@@ -15,7 +22,7 @@ def walk(content):
     count = 0
     for char in content:
         count += 1
-        if char == '(':
+        if char == "(":
             floor += 1
         else:
             floor -= 1
@@ -25,4 +32,4 @@ def walk(content):
             min = floor
         if floor < 0 and basementchar == 0:
             basementchar = count
-    return {'floor':floor,'basementchar':basementchar}
+    return {"floor": floor, "basementchar": basementchar}

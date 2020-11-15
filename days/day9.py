@@ -1,7 +1,7 @@
-#module day9
+# module day9
 
 
-class CityGraph():
+class CityGraph:
     def __init__(self):
         self.graph = {}
         self.edges = {}

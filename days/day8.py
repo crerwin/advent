@@ -17,7 +17,7 @@ def parse_line(line):
                 encode_count += 1
                 special_count += 1
                 i += 1
-        elif line[i] == "\"":
+        elif line[i] == '"':
             encode_count += 1
         i += 1
     print(special_count, encode_count)

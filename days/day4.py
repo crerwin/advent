@@ -1,4 +1,4 @@
-#module day4
+# module day4
 
 import hashlib
 
@@ -12,7 +12,7 @@ def textonly(input):
 
 def hashvalue(key, value):
     input = key + value
-    return hashlib.md5(input.encode('utf-8')).hexdigest()
+    return hashlib.md5(input.encode("utf-8")).hexdigest()
 
 
 def isvalidhash(myhash, numzeros=5):
@@ -22,7 +22,7 @@ def isvalidhash(myhash, numzeros=5):
     elif numzeros == 6:
         target = "000000"
     else:
-        raise ValueError('only 5 and 6 are acceptable here')
+        raise ValueError("only 5 and 6 are acceptable here")
     if myhash[:numzeros] == target:
         return True
     else:

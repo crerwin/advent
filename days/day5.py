@@ -1,4 +1,4 @@
-#module day5
+# module day5
 
 
 def textonly(inputfilename):
@@ -8,8 +8,9 @@ def textonly(inputfilename):
     result2 = checklines(content, "part2")
     return "Nice lines: " + str(result) + " part 2 Nice lines: " + str(result2)
 
+
 def criteria1(input):
-    vowels = ['a', 'e', 'i', 'o', 'u']
+    vowels = ["a", "e", "i", "o", "u"]
     vowelcount = 0
     for char in input:
         if char in vowels:
@@ -21,7 +22,7 @@ def criteria1(input):
 
 
 def criteria2(input):
-    prevchar = ''
+    prevchar = ""
     for char in input:
         if char == prevchar:
             return True
@@ -41,7 +42,7 @@ def criteria4(input):
     listofstringpairs = []
     for char1, char2 in zip(input[::1], input[1::1]):
         tempstring = char1 + char2
-        if tempstring in listofstringpairs[0:len(listofstringpairs)-1]:
+        if tempstring in listofstringpairs[0 : len(listofstringpairs) - 1]:
             return True
         else:
             listofstringpairs.append(tempstring)
@@ -70,4 +71,3 @@ def checklines(content, part="part1"):
         if isnice(line, part):
             nicelines += 1
     return nicelines
-

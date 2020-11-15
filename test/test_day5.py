@@ -89,7 +89,6 @@ class Criteria5Case(unittest.TestCase):
         self.assertEquals(day5.criteria5("xxyxx"), True)
 
 
-
 class IsNicePart2Case(unittest.TestCase):
     def test_isnice_part2_case_1(self):
         self.assertEquals(day5.isnice("qjhvhtzxzqqjkmpb", "part2"), True)

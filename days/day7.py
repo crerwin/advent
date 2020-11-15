@@ -1,7 +1,7 @@
 # module day7
 
 
-class Component():
+class Component:
     def __init__(self, name=""):
         self.name = name
         self.input = 0
@@ -57,7 +57,7 @@ class NotGate(Gate):
 
     def _get_output(self):
         # bitwise compliment
-        return ~self.input + 2**16
+        return ~self.input + 2 ** 16
 
     output = property(_get_output)
 
@@ -74,7 +74,7 @@ class ShiftGate(Gate):
         elif self.direction == "right":
             return self.input >> self.amount
         else:
-            raise ValueError('bad direction')
+            raise ValueError("bad direction")
 
     output = property(_get_output)
 
@@ -117,7 +117,7 @@ class OrGate(TwoConnectionGate):
     output = property(_get_output)
 
 
-class BreadBoard():
+class BreadBoard:
     def __init__(self, starting_component=None):
         self.components = {}
 
@@ -131,21 +131,68 @@ class BreadBoard():
         # takes in a tuple and adds the specified components
         if results[0] == "power":
             self.add_component(PowerSource(results[1]), results[2] + "_power")
-            self.add_component(self._get_or_create_wire(results[2], self.get_component(results[2] + "_power")), results[2])
+            self.add_component(
+                self._get_or_create_wire(
+                    results[2], self.get_component(results[2] + "_power")
+                ),
+                results[2],
+            )
         elif results[0] == "wire_to_wire":
-            self.add_component(self._get_or_create_wire(results[2], self._get_or_create_wire(results[1])), results[2])
+            self.add_component(
+                self._get_or_create_wire(
+                    results[2], self._get_or_create_wire(results[1])
+                ),
+                results[2],
+            )
         elif results[0] == "not":
-            self.add_component(NotGate(self._get_or_create_wire(results[1])), results[1] + "_not")
-            self.add_component(self._get_or_create_wire(results[2], self.get_component(results[1] + "_not")), results[2])
+            self.add_component(
+                NotGate(self._get_or_create_wire(results[1])), results[1] + "_not"
+            )
+            self.add_component(
+                self._get_or_create_wire(
+                    results[2], self.get_component(results[1] + "_not")
+                ),
+                results[2],
+            )
         elif results[0] == "and":
-            self.add_component(AndGate(self._get_or_create_wire(results[1]), self._get_or_create_wire(results[2])), results[1] + "_and")
-            self.add_component(self._get_or_create_wire(results[3], self.get_component(results[1] + "_and")), results[3])
+            self.add_component(
+                AndGate(
+                    self._get_or_create_wire(results[1]),
+                    self._get_or_create_wire(results[2]),
+                ),
+                results[1] + "_and",
+            )
+            self.add_component(
+                self._get_or_create_wire(
+                    results[3], self.get_component(results[1] + "_and")
+                ),
+                results[3],
+            )
         elif results[0] == "or":
-            self.add_component(OrGate(self._get_or_create_wire(results[1]), self._get_or_create_wire(results[2])), results[1] + "_and")
-            self.add_component(self._get_or_create_wire(results[3], self.get_component(results[1] + "_and")), results[3])
+            self.add_component(
+                OrGate(
+                    self._get_or_create_wire(results[1]),
+                    self._get_or_create_wire(results[2]),
+                ),
+                results[1] + "_and",
+            )
+            self.add_component(
+                self._get_or_create_wire(
+                    results[3], self.get_component(results[1] + "_and")
+                ),
+                results[3],
+            )
         elif results[0] == "shift":
-            self.add_component(ShiftGate(results[1], results[3], self._get_or_create_wire(results[2])), results[2] + "_shift_" + results[1])
-            self.add_component(self._get_or_create_wire(results[4], self.get_component(results[2] + "_shift_" + results[1])), results[4])
+            self.add_component(
+                ShiftGate(results[1], results[3], self._get_or_create_wire(results[2])),
+                results[2] + "_shift_" + results[1],
+            )
+            self.add_component(
+                self._get_or_create_wire(
+                    results[4], self.get_component(results[2] + "_shift_" + results[1])
+                ),
+                results[4],
+            )
         else:
             raise ValueError("bad input")
 
@@ -182,9 +229,9 @@ def parseline(line):
         elif words[1] == "RSHIFT":
             return "shift", "right", words[0], words[2], words[4]
         else:
-            raise ValueError('bad operator input')
+            raise ValueError("bad operator input")
     else:
-        raise ValueError('bad line')
+        raise ValueError("bad line")
 
 
 def is_number(string):
@@ -208,4 +255,4 @@ def load_file(inputfilename):
 
 def textonly(inputfilename):
     breadboard = load_file(inputfilename)
-    return breadboard.get_component('a').output
+    return breadboard.get_component("a").output

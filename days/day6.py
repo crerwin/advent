@@ -1,7 +1,7 @@
-#module day6
+# module day6
 
 
-class LightArray():
+class LightArray:
     def __init__(self):
         self.lights = [[False for i in range(1000)] for i in range(1000)]
 
@@ -17,7 +17,7 @@ class LightArray():
 
     def toggle(self, x1, y1, x2, y2):
         for x in range(x1, x2 + 1):
-            for y in range (y1, y2 + 1):
+            for y in range(y1, y2 + 1):
                 self.lights[x][y] = not self.lights[x][y]
 
     def act(self, operator, x1, y1, x2, y2):
@@ -28,7 +28,7 @@ class LightArray():
         elif operator == "toggle":
             self.toggle(x1, y1, x2, y2)
         else:
-            raise ValueError('bad value for operator')
+            raise ValueError("bad value for operator")
 
     def get_lit_count(self):
         litcount = 0
@@ -47,7 +47,7 @@ class Part2Array(LightArray):
     def turnon(self, x1, y1, x2, y2):
         for x in range(x1, x2 + 1):
             for y in range(y1, y2 + 1):
-                self.lights[x][y] +=1
+                self.lights[x][y] += 1
 
     def turnoff(self, x1, y1, x2, y2):
         for x in range(x1, x2 + 1):
@@ -57,7 +57,7 @@ class Part2Array(LightArray):
 
     def toggle(self, x1, y1, x2, y2):
         for x in range(x1, x2 + 1):
-            for y in range (y1, y2 + 1):
+            for y in range(y1, y2 + 1):
                 self.lights[x][y] += 2
 
     def get_brightness(self):
@@ -79,7 +79,12 @@ def textonly(inputfilename):
     for line in content.splitlines():
         result = parseline(line)
         griswold2.act(*result)
-    stringresult = "Lights lit (part 1): " + str(griswold.get_lit_count()) + " Brightness (part 2): " + str(griswold2.get_brightness())
+    stringresult = (
+        "Lights lit (part 1): "
+        + str(griswold.get_lit_count())
+        + " Brightness (part 2): "
+        + str(griswold2.get_brightness())
+    )
     return stringresult
 
 
@@ -94,6 +99,5 @@ def parseline(input):
         x1, y1 = words[2].split(",")
         x2, y2 = words[4].split(",")
     else:
-        raise ValueError('bad input line')
+        raise ValueError("bad input line")
     return operator, int(x1), int(y1), int(x2), int(y2)
-

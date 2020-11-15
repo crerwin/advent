@@ -1,4 +1,4 @@
-#module day10
+# module day10
 
 
 def lookAndSay(input):
@@ -18,9 +18,9 @@ def lookAndSay(input):
     result += last_char
     return result
 
+
 def iterate(input, num_iterations):
     result = input
-    for i in range(0,num_iterations):
+    for i in range(0, num_iterations):
         result = lookAndSay(result)
     return result
-        

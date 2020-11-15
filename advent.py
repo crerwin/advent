@@ -2,14 +2,15 @@ import os
 import sys
 from days import *
 
-class Dispatcher():
+
+class Dispatcher:
     def exec_day(self, day_number):
-        method_name = 'execday' + str(day_number)
+        method_name = "execday" + str(day_number)
         method = getattr(self, method_name, lambda: "not implemented")
         return method()
 
     def makefilepath(self, filename):
-        return os.path.join('inputs', filename)
+        return os.path.join("inputs", filename)
 
     def execday1(self):
         inputfilename = self.makefilepath("day1input.txt")
@@ -71,5 +72,5 @@ def main():
         print("too many arguments")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     sys.exit(main())

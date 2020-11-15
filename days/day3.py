@@ -1,12 +1,12 @@
-#module day3.py
+# module day3.py
 
 
-class Coordinates():
+class Coordinates:
     x = 0
     y = 0
 
 
-class Person():
+class Person:
     def __init__(self):
         self.coords = Coordinates()
         self.coords.x = 0
@@ -64,10 +64,9 @@ class Dispatcher(Person):
             self.nexttomove = self.santa
             self.lasttomove = self.robo_santa
         else:
-            raise Exception('nexttomove is assigned to an impossible value?!')
+            raise Exception("nexttomove is assigned to an impossible value?!")
 
     coords = property(_get_coords)
-
 
 
 def textonly(inputfilename):
@@ -75,7 +74,12 @@ def textonly(inputfilename):
     content = file.read()
     santaresult = walk(content, "part1")
     bothresult = walk(content, "part2")
-    stringresult = "Number of houses visited by Santa only: " + str(santaresult) + " number of houses visited by Both: " + str(bothresult)
+    stringresult = (
+        "Number of houses visited by Santa only: "
+        + str(santaresult)
+        + " number of houses visited by Both: "
+        + str(bothresult)
+    )
     return stringresult
 
 
@@ -107,7 +111,7 @@ def getpersontype(part):
     elif part == "part2":
         return Dispatcher()
     else:
-        raise ValueError('bad value for part')
+        raise ValueError("bad value for part")
 
 
 def moveperson(person, char):
@@ -120,4 +124,4 @@ def moveperson(person, char):
     elif char == "v":
         person.movedown()
     else:
-        raise ValueError('bad character found')
+        raise ValueError("bad character found")

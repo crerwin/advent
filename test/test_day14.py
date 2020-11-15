@@ -1,6 +1,7 @@
 import unittest
 from advent.days import day14
 
+
 class ReindeerTestCase(unittest.TestCase):
     def test_reindeer_1(self):
         self.test_reindeer = day14.Reindeer(10, 20, 50)

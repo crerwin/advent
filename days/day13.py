@@ -1,7 +1,7 @@
 # module day13
 
 
-class Person():
+class Person:
     def __init__(self, name):
         self.name = name
         self.opinions = {}
@@ -13,7 +13,7 @@ class Person():
         return self.opinions[name]
 
 
-class People():
+class People:
     def __init__(self):
         self.people = {}
 
@@ -31,7 +31,7 @@ class People():
         return self.people[name]
 
 
-class Seat():
+class Seat:
     def __init__(self, person):
         self.person = person
 
@@ -42,14 +42,12 @@ class Seat():
         self.left_neighbor = seat
 
 
-class SeatingChart():
+class SeatingChart:
     def __init__(self, seat):
         self.starting_seat = seat
 
     def get_overall_opinion(self):
         pass
-
-
 
 
 def parser(line):

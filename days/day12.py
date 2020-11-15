@@ -1,7 +1,7 @@
 # module day12
 
 
-class parser():
+class parser:
     def part_a(self, contents):
         ints = []
         for s in contents.split():

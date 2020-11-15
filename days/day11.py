@@ -1,7 +1,7 @@
 # module day11
 
 
-class password():
+class password:
     def __init__(self, password_value):
         if len(password_value) == 8:
             self.password_value = password_value.lower()
@@ -23,19 +23,20 @@ class password():
         else:
             templist = list(self.password_value)
             for currchar in range(len(templist) - 1, 0, -1):
-                tempchar = self.increment_character(chr(ord(self.password_value[currchar])))
+                tempchar = self.increment_character(
+                    chr(ord(self.password_value[currchar]))
+                )
                 if tempchar != "a":
                     templist[currchar] = tempchar
                     break
                 else:
                     templist[currchar] = tempchar
-            self.password_value = ''.join(templist)
+            self.password_value = "".join(templist)
 
     def find_next_password(self):
         self.increment_password()
         while not self.is_valid():
             self.increment_password()
-
 
     def meets_requirement_1(self):
         prev_char = ""

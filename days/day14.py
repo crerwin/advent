@@ -1,7 +1,7 @@
 # module day14
 
 
-class Reindeer():
+class Reindeer:
     def __init__(self, speed, fly_time, rest_time, name="John Doe"):
         self.name = name
         self.speed = speed
@@ -28,17 +28,16 @@ class Reindeer():
         return distance
 
 
-class Race():
+class Race:
     def __init__(self, reindeers):
         self.reindeers = reindeers
 
     def run(self, time):
-        self.reindeers.sort(key=lambda reindeer: reindeer.run(time),
-                            reverse=True)
+        self.reindeers.sort(key=lambda reindeer: reindeer.run(time), reverse=True)
         return self.reindeers[0].name, self.reindeers[0].run(time)
 
 
-class OfficialRace():
+class OfficialRace:
     # input is small enough that we don't need to read from a file
 
     def run(self):
@@ -57,8 +56,7 @@ class OfficialRace():
         return Race(self.reindeers).run(self.time)
 
 
-class Part2Race():
-
+class Part2Race:
     def run(self):
         self.time = 2503
         self.reindeers = []
@@ -73,8 +71,9 @@ class Part2Race():
         self.reindeers.append(Reindeer(37, 1, 36, "Dancer"))
 
         for curr_time in range(1, self.time):
-            self.reindeers.sort(key=lambda reindeer: reindeer.run(curr_time),
-                                reverse=True)
+            self.reindeers.sort(
+                key=lambda reindeer: reindeer.run(curr_time), reverse=True
+            )
             lead_distance = self.reindeers[0].distance
             for i in range(0, len(self.reindeers)):
                 if self.reindeers[i].distance == lead_distance:
