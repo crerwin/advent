@@ -14,3 +14,4 @@ python = "^3.8"
 [tool.poetry.dev-dependencies]
 black = {version = "*", allow-prereleases = true}
 pytest = "*"
+flake8 = "^3.8.4"
