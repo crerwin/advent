@@ -5,18 +5,18 @@ These are solutions for http://adventofcode.com/
 
 I've checked in my inputs so I can work on this without redownloading them, but they are technically per-user.
 
-## Test Example
+## Setup
 ```
-python -m unittest test/test_day10.py
+poetry install
 ```
 
-Or on OS X, specify python 3:
+## Test Example
 ```
-python3 -m unittest test/test_day14.py
+poetry run pytest test/test_day10.py
 ```
 
 ## Executing
 Specify the day number as the first (and only) argument
 ```
-python advent.py 10
+poetry run python advent.py 10
 ```
