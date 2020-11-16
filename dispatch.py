@@ -72,5 +72,8 @@ def main():
         print("too many arguments")
 
 
+def advent():
+    print("hello")
+
 if __name__ == "__main__":
     sys.exit(main())

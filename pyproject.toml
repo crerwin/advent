@@ -3,7 +3,7 @@ requires = ["poetry>=1.0.10"]
 build-backend = "poetry.masonry.api"
 
 [tool.poetry]
-name = "Advent of Code"
+name = "advent"
 version = "0.0.1"
 description = "Solutions to Advent of Code: https://adventofcode.com"
 authors = ["Chris Erwin <crerwin@gmail.com>"]
@@ -15,3 +15,6 @@ python = "^3.8"
 black = {version = "*", allow-prereleases = true}
 pytest = "*"
 flake8 = "^3.8.4"
+
+[tool.poetry.scripts]
+advent = "advent.advent:advent"
