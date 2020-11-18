@@ -1,5 +1,5 @@
 import unittest
-from advent.days import day1
+from advent.advent2015 import day1
 
 
 class WalkTestCase(unittest.TestCase):

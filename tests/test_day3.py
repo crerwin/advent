@@ -1,5 +1,5 @@
 import unittest
-from advent.days import day3
+from days import day3
 
 
 class SantaOnlyTestCase(unittest.TestCase):

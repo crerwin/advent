@@ -1,5 +1,5 @@
 import unittest
-from advent.days import day12
+from days import day12
 
 
 # class parsertestcase(unittest.TestCase):

@@ -1,12 +1,12 @@
 import click
 
-from .advent2015.day1 import Day1
+from advent.advent2015.day1 import Day1
 
 
 def _run(year, day, part):
-    if year == 2015:
+    if year == 2015 and day == 1:
         d = Day1("inputs/day1input.txt")
-        print(d.part1())
+        print(d.part(part))
     else:
         print("not yet implemented")
 

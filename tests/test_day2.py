@@ -1,5 +1,5 @@
 import unittest
-from advent.days import day2
+from days import day2
 
 
 class WrapTestCase(unittest.TestCase):
