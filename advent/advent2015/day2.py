@@ -1,17 +1,19 @@
-# module day2.py
+from advent.day import Day
 
 
-def textonly(inputfilename):
-    file = open(inputfilename)
-    content = file.read()
-    result = calc(content)
-    stringresult = (
-        "Paper area: "
-        + str(result["paperarea"])
-        + " ribbon length: "
-        + str(result["ribbonlength"])
-    )
-    return stringresult
+class Day2(Day):
+    def __init__(self):
+        super().__init__()
+        self.year = 2015
+        self.day = 2
+
+    def part1(self):
+        result = calc(self.input())
+        return result["paperarea"]
+
+    def part2(self):
+        result = calc(self.input())
+        return result["ribbonlength"]
 
 
 def calc(content):

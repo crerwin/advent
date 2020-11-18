@@ -1,5 +1,5 @@
 import unittest
-from days import day2
+from advent.advent2015 import day2
 
 
 class WrapTestCase(unittest.TestCase):
@@ -16,3 +16,14 @@ class RibbonTestCase(unittest.TestCase):
 
     def test_ribbon_case2(self):
         self.assertEqual(day2.ribbon(1, 1, 10), 14)
+
+
+class Day2TestCase(unittest.TestCase):
+    def setUp(self):
+        self.day = day2.Day2()
+
+    def test_part_1(self):
+        self.assertEqual(self.day.part(1), 1588178)
+
+    def test_part_2(self):
+        self.assertEqual(self.day.part(2), 3783758)
