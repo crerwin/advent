@@ -46,3 +46,14 @@ class WalkTestCase(unittest.TestCase):
     def test_walk_case_11(self):
         result = day1.walk("()())")
         self.assertEqual(result["basementchar"], 5)
+
+
+class Day1TestCase(unittest.TestCase):
+    def setUp(self):
+        self.day = day1.Day1()
+
+    def test_part_1(self):
+        self.assertEqual(self.day.part(1), 232)
+
+    def test_part_2(self):
+        self.assertEqual(self.day.part(2), 1783)

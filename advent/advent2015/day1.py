@@ -2,16 +2,17 @@ from advent.day import Day
 
 
 class Day1(Day):
-    def __init__(self, inputfilename):
-        f = open(inputfilename)
-        self.input_data = f.read()
+    def __init__(self):
+        super().__init__()
+        self.year = 2015
+        self.day = 1
 
     def part1(self):
-        result = walk(self.input_data)
+        result = walk(self.input())
         return result["floor"]
 
     def part2(self):
-        result = walk(self.input_data)
+        result = walk(self.input())
         return result["basementchar"]
 
 
