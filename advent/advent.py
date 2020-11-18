@@ -1,14 +1,25 @@
 import click
+from advent import advent2015, advent2016, advent2017, advent2018, advent2019, advent2020
 
-from advent.advent2015.day1 import Day1
+
+class AdventCalendar(object):
+    # Each year is an Advent Calendar for organization purposes
+    def __init__(self):
+        self.days = {}
+        self.days['2015'] = advent2015.days
+        self.days['2016'] = advent2016.days
+        self.days['2017'] = advent2017.days
+        self.days['2018'] = advent2018.days
+        self.days['2019'] = advent2019.days
+        self.days['2020'] = advent2020.days
+
+    def run_day(self, year, day, part):
+        return self.days[str(year)][day-1].part(part)
 
 
 def _run(year, day, part):
-    if year == 2015 and day == 1:
-        d = Day1()
-        print(d.part(part))
-    else:
-        print("not yet implemented")
+    advent_calendar = AdventCalendar()
+    print(advent_calendar.run_day(year, day, part))
 
 
 @click.command()
