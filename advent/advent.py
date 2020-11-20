@@ -21,7 +21,11 @@ class AdventCalendar(object):
         self.days["2020"] = advent2020.days
 
     def run_day(self, year, day, part):
-        return self.days[str(year)][day - 1].part(part)
+        yr = self.days[str(year)]
+        if day in yr.keys():
+            return self.days[str(year)][day]().part(part)
+        else:
+            return f"Day {day} not yet implemented for year {year}."
 
 
 def _run(year, day, part):
