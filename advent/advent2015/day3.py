@@ -8,10 +8,10 @@ class Day3(Day):
         self.day = 3
 
     def part1(self):
-        return walk(self.input(), "part1")
+        return str(walk(self.input(), "part1"))
 
     def part2(self):
-        return walk(self.input(), "part2")
+        return str(walk(self.input(), "part2"))
 
 
 class Coordinates:

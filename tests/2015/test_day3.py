@@ -1,4 +1,5 @@
 import unittest
+from tests.test_day import DayTest
 from advent.advent2015 import day3
 
 
@@ -33,3 +34,9 @@ class SantaAndRoboSantaTestCase(unittest.TestCase):
 
     def test_walk_case_3(self):
         self.assertEqual(day3.walk("^v^v^v^v^v", "part2"), 11)
+
+
+class Day3Test(DayTest):
+    test_day = day3.Day3()
+    expected_part_1 = "2572"
+    expected_part_2 = "2631"
