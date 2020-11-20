@@ -9,11 +9,11 @@ class Day1(Day):
 
     def part1(self):
         result = walk(self.input())
-        return result["floor"]
+        return str(result["floor"])
 
     def part2(self):
         result = walk(self.input())
-        return result["basementchar"]
+        return str(result["basementchar"])
 
 
 def walk(instructions):

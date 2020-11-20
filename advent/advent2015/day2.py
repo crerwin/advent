@@ -9,11 +9,11 @@ class Day2(Day):
 
     def part1(self):
         result = calc(self.input())
-        return result["paperarea"]
+        return str(result["paperarea"])
 
     def part2(self):
         result = calc(self.input())
-        return result["ribbonlength"]
+        return str(result["ribbonlength"])
 
 
 def calc(content):

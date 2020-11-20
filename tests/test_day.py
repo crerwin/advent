@@ -3,10 +3,13 @@ from advent import day
 
 
 class DayTest(unittest.TestCase):
-    def setUp(self):
-        self.test_day = day.Day()
-        self.expected_part_1 = "not yet implemented"
-        self.expected_part_2 = "not yet implemented"
+    test_day = day.Day()
+    expected_part_1 = "not yet implemented"
+    expected_part_2 = "not yet implemented"
+
+    def test_returns_strings(self):
+        self.assertIsInstance(self.test_day.part1(), str)
+        self.assertIsInstance(self.test_day.part2(), str)
 
     def test_part_1(self):
         self.assertEqual(self.test_day.part1(), self.expected_part_1)
