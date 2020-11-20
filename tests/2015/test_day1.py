@@ -1,8 +1,14 @@
 import unittest
+from tests.test_day import DayTest
 from advent.advent2015 import day1
 
 
-class WalkTestCase(unittest.TestCase):
+class WalkTestCase(DayTest):
+    def setUp(self):
+        self.test_day = day1.Day1()
+        self.expected_part_1 = 232
+        self.expected_part_2 = 1783
+
     def test_walk_case_1(self):
         result = day1.walk("(())")
         self.assertEqual(result["floor"], 0)
@@ -48,12 +54,12 @@ class WalkTestCase(unittest.TestCase):
         self.assertEqual(result["basementchar"], 5)
 
 
-class Day1TestCase(unittest.TestCase):
-    def setUp(self):
-        self.day = day1.Day1()
+# class Day1TestCase(unittest.TestCase):
+#     def setUp(self):
+#         self.day = day1.Day1()
 
-    def test_part_1(self):
-        self.assertEqual(self.day.part(1), 232)
+#     def test_part_1(self):
+#         self.assertEqual(self.day.part(1), 232)
 
-    def test_part_2(self):
-        self.assertEqual(self.day.part(2), 1783)
+#     def test_part_2(self):
+#         self.assertEqual(self.day.part(2), 1783)
