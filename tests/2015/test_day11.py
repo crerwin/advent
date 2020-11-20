@@ -1,5 +1,5 @@
 import unittest
-from days import day11
+from advent.advent2015 import day11
 
 
 class PasswordTestCase(unittest.TestCase):

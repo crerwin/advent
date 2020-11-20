@@ -1,5 +1,5 @@
 import unittest
-from days import day14
+from advent.advent2015 import day14
 
 
 class ReindeerTestCase(unittest.TestCase):

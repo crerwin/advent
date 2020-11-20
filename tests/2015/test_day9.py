@@ -1,5 +1,5 @@
 import unittest
-from days import day9
+from advent.advent2015 import day9
 
 
 class GraphTestCase(unittest.TestCase):

@@ -1,4 +1,17 @@
-# module day3.py
+from advent.day import Day
+
+
+class Day3(Day):
+    def __init__(self):
+        super().__init__()
+        self.year = 2015
+        self.day = 3
+
+    def part1(self):
+        return walk(self.input(), "part1")
+
+    def part2(self):
+        return walk(self.input(), "part2")
 
 
 class Coordinates:
@@ -124,4 +137,4 @@ def moveperson(person, char):
     elif char == "v":
         person.movedown()
     else:
-        raise ValueError("bad character found")
+        raise ValueError(f"bad character found: {char}")

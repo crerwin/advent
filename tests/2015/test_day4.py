@@ -1,5 +1,5 @@
 import unittest
-from days import day4
+from advent.advent2015 import day4
 
 
 class HashCase(unittest.TestCase):

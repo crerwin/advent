@@ -1,5 +1,5 @@
 import unittest
-from days import day8
+from advent.advent2015 import day8
 
 
 # hard to test, easier to print with the input
