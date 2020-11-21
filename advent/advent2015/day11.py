@@ -12,6 +12,16 @@ class password:
         return self.password_value
 
     def increment_character(self, input):
+        if input == "h":
+            return "j"
+        elif input == "n":
+            return "p"
+        elif input == "k":
+            return "m"
+        else:
+            return self.strict_increment_character(input)
+
+    def strict_increment_character(self, input):
         if input == "z":
             return "a"
         else:
@@ -39,17 +49,15 @@ class password:
             self.increment_password()
 
     def meets_requirement_1(self):
-        prev_char = ""
-        run_count = 1
-        for char in self.password_value:
-            if prev_char != "":
-                if self.increment_character(prev_char) == char and prev_char != "z":
-                    run_count += 1
-                else:
-                    run_count = 1
-            if run_count >= 3:
+        chars = list(self.password_value)
+        for i in range(0, len(chars) - 3):
+            if chars[i] == "y" or chars[i] == "z":
+                continue
+            if (
+                self.strict_increment_character(chars[i]) == chars[i + 1]
+                and self.strict_increment_character(chars[i + 1]) == chars[i + 2]
+            ):
                 return True
-            prev_char = char
         return False
 
     def meets_requirement_2(self):
@@ -64,9 +72,11 @@ class password:
     def meets_requirement_3(self):
         prevchar = ""
         paircount = 0
+        firstpairchar = ""
         for char in self.password_value:
-            if char == prevchar:
+            if char == prevchar and char != firstpairchar:
                 paircount += 1
+                firstpairchar = char
                 prevchar = ""
             else:
                 prevchar = char

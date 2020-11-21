@@ -11,6 +11,10 @@ class PasswordTestCase(unittest.TestCase):
         self.test_password = day11.password("aeiopqff")
         self.assertEqual(True, self.test_password.meets_requirement_1())
 
+    def test_rule_1_3(self):
+        self.test_password = day11.password("ghjaaabb")
+        self.assertEqual(False, self.test_password.meets_requirement_1())
+
     def test_rule_2_1(self):
         self.test_password = day11.password("abcdefgh")
         self.assertEqual(True, self.test_password.meets_requirement_2())
@@ -43,6 +47,10 @@ class PasswordTestCase(unittest.TestCase):
         self.test_password = day11.password("abcccefg")
         self.assertEqual(False, self.test_password.meets_requirement_3())
 
+    def test_rule_3_5(self):
+        self.test_password = day11.password("aabcdeaa")
+        self.assertEqual(False, self.test_password.meets_requirement_3())
+
     def test_combo_1(self):
         self.test_password = day11.password("hijklmmn")
         self.assertEqual(True, self.test_password.meets_requirement_1())
@@ -70,6 +78,9 @@ class PasswordTestCase(unittest.TestCase):
         self.assertEqual("b", self.test_password.increment_character("a"))
         self.assertEqual("g", self.test_password.increment_character("f"))
         self.assertEqual("a", self.test_password.increment_character("z"))
+        self.assertEqual("j", self.test_password.increment_character("h"))
+        self.assertEqual("p", self.test_password.increment_character("n"))
+        self.assertEqual("m", self.test_password.increment_character("k"))
 
     def test_increment_password_1(self):
         self.test_password = day11.password("aaaaaaaa")
