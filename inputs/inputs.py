@@ -1,3 +1,6 @@
 def get_input(year, day):
-    f = open(f"inputs/{year}/day{day}input.txt")
-    return f.read()
+    if year == 2015 and day == 4:
+        return "ckczppom"
+    else:
+        f = open(f"inputs/{year}/day{day}input.txt")
+        return f.read()
