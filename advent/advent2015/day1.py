@@ -2,10 +2,8 @@ from advent.day import Day
 
 
 class Day1(Day):
-    def __init__(self):
-        super().__init__()
-        self.year = 2015
-        self.day = 1
+    year = 2015
+    day = 1
 
     def part1(self):
         result = walk(self.input())

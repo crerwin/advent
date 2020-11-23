@@ -4,10 +4,8 @@ from advent.day import Day
 
 
 class Day4(Day):
-    def __init__(self):
-        super().__init__()
-        self.year = 2015
-        self.day = 4
+    year = 2015
+    day = 4
 
     def part1(self):
         return findvalidhash(self.input())

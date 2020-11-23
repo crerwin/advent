@@ -4,10 +4,9 @@ from inputs import inputs
 class Day(object):
     # All days implement Day, so if a given day has not implemented
     # a specific part, it will return the defaults below.
-    def __init__(self):
-        self.input_data = None
-        self.year = None
-        self.day = None
+    input_data = None
+    year = None
+    day = None
 
     def input(self):
         if not self.input_data:

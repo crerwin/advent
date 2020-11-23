@@ -2,10 +2,8 @@ from advent.day import Day
 
 
 class Day2(Day):
-    def __init__(self):
-        super().__init__()
-        self.year = 2015
-        self.day = 2
+    year = 2015
+    day = 2
 
     def part1(self):
         result = calc(self.input())
