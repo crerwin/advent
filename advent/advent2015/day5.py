@@ -5,11 +5,11 @@ class Day5(Day):
     year = 2015
     day = 5
 
-    def part1(self):
-        return str(checklines(self.input()))
+    def _part1(self):
+        return checklines(self.input())
 
-    def part2(self):
-        return str(checklines(self.input(), "part2"))
+    def _part2(self):
+        return checklines(self.input(), "part2")
 
 
 def textonly(inputfilename):

@@ -5,11 +5,11 @@ class Day1(Day):
     year = 2018
     day = 1
 
-    def part1(self):
-        return str(walk(0, input_to_list(self.input())))
+    def _part1(self):
+        return walk(0, input_to_list(self.input()))
 
-    def part2(self):
-        return str(find_repeated_frequency(0, input_to_list(self.input())))
+    def _part2(self):
+        return find_repeated_frequency(0, input_to_list(self.input()))
 
 
 def input_to_list(input):

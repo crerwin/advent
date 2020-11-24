@@ -5,10 +5,10 @@ class Day2(Day):
     year = 2018
     day = 2
 
-    def part1(self):
-        return str(get_checksum(input_to_list(self.input())))
+    def _part1(self):
+        return get_checksum(input_to_list(self.input()))
 
-    def part2(self):
+    def _part2(self):
         return get_correct_id_common(input_to_list(self.input()))
 
 

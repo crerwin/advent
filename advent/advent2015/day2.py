@@ -5,13 +5,13 @@ class Day2(Day):
     year = 2015
     day = 2
 
-    def part1(self):
+    def _part1(self):
         result = calc(self.input())
-        return str(result["paperarea"])
+        return result["paperarea"]
 
-    def part2(self):
+    def _part2(self):
         result = calc(self.input())
-        return str(result["ribbonlength"])
+        return result["ribbonlength"]
 
 
 def calc(content):

@@ -5,11 +5,11 @@ class Day3(Day):
     year = 2015
     day = 3
 
-    def part1(self):
-        return str(walk(self.input(), "part1"))
+    def _part1(self):
+        return walk(self.input(), "part1")
 
-    def part2(self):
-        return str(walk(self.input(), "part2"))
+    def _part2(self):
+        return walk(self.input(), "part2")
 
 
 class Coordinates:

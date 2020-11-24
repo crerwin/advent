@@ -5,13 +5,13 @@ class Day1(Day):
     year = 2015
     day = 1
 
-    def part1(self):
+    def _part1(self):
         result = walk(self.input())
-        return str(result["floor"])
+        return result["floor"]
 
-    def part2(self):
+    def _part2(self):
         result = walk(self.input())
-        return str(result["basementchar"])
+        return result["basementchar"]
 
 
 def walk(instructions):

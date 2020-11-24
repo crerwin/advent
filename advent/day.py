@@ -22,7 +22,13 @@ class Day(object):
             return "invalid part number specified - only 1 and 2 are valid."
 
     def part1(self):
-        return "not yet implemented"
+        return str(self._part1())
 
     def part2(self):
+        return str(self._part2())
+
+    def _part1(self):
+        return "not yet implemented"
+
+    def _part2(self):
         return "not yet implemented"
