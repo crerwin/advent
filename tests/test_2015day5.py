@@ -1,4 +1,6 @@
 import unittest
+import pytest
+from tests.test_day import DayTest
 from advent.advent2015 import day5
 
 
@@ -101,3 +103,10 @@ class IsNicePart2Case(unittest.TestCase):
 
     def test_isnice_part2_case_4(self):
         self.assertEqual(day5.isnice("ieodomkazucvgmuy", "part2"), False)
+
+
+@pytest.mark.day
+class Day4Test(DayTest):
+    test_day = day5.Day5()
+    expected_part_1 = "258"
+    expected_part_2 = "53"

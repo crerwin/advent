@@ -1,5 +1,6 @@
 Unit Tests:
   stage: test
   script:
+    - pip install poetry
     - poetry install
     - poetry run pytest
