@@ -1,5 +1,6 @@
 Unit Tests:
   stage: test
+  image: python:3.8
   script:
     - pip install poetry
     - poetry install
