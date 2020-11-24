@@ -1,5 +1,5 @@
 Unit Tests:
-stage: test
-script:
-  - poetry install
-  - poetry run pytest
+  stage: test
+  script:
+    - poetry install
+    - poetry run pytest
