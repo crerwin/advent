@@ -1,4 +1,6 @@
 import unittest
+import pytest
+from tests.test_day import DayTest
 from advent.advent2015 import day6
 
 
@@ -50,3 +52,10 @@ class Part2TestCase(unittest.TestCase):
         testarray = day6.Part2Array()
         testarray.act(*result)
         self.assertEqual(testarray.get_brightness(), 0)
+
+
+@pytest.mark.day
+class Day6Test(DayTest):
+    test_day = day6.Day6()
+    expected_part_1 = "400410"
+    expected_part_2 = "15343601"

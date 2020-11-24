@@ -1,4 +1,23 @@
-# module day6
+from advent.day import Day
+
+
+class Day6(Day):
+    year = 2015
+    day = 6
+
+    def _part1(self):
+        griswold = LightArray()
+        for line in self.input().splitlines():
+            result = parseline(line)
+            griswold.act(*result)
+        return griswold.get_lit_count()
+
+    def _part2(self):
+        griswold = Part2Array()
+        for line in self.input().splitlines():
+            result = parseline(line)
+            griswold.act(*result)
+        return griswold.get_brightness()
 
 
 class LightArray:
@@ -66,26 +85,6 @@ class Part2Array(LightArray):
             for y in range(0, 1000):
                 brightness += self.lights[x][y]
         return brightness
-
-
-def textonly(inputfilename):
-    griswold = LightArray()
-    griswold2 = Part2Array()
-    file = open(inputfilename)
-    content = file.read()
-    for line in content.splitlines():
-        result = parseline(line)
-        griswold.act(*result)
-    for line in content.splitlines():
-        result = parseline(line)
-        griswold2.act(*result)
-    stringresult = (
-        "Lights lit (part 1): "
-        + str(griswold.get_lit_count())
-        + " Brightness (part 2): "
-        + str(griswold2.get_brightness())
-    )
-    return stringresult
 
 
 def parseline(input):

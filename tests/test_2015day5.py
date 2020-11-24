@@ -106,7 +106,7 @@ class IsNicePart2Case(unittest.TestCase):
 
 
 @pytest.mark.day
-class Day4Test(DayTest):
+class Day5Test(DayTest):
     test_day = day5.Day5()
     expected_part_1 = "258"
     expected_part_2 = "53"
