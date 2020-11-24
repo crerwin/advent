@@ -12,30 +12,6 @@ class Dispatcher:
     def makefilepath(self, filename):
         return os.path.join("inputs", filename)
 
-    def execday1(self):
-        inputfilename = self.makefilepath("day1input.txt")
-        return day1.textonly(inputfilename)
-
-    def execday2(self):
-        inputfilename = self.makefilepath("day2input.txt")
-        return day2.textonly(inputfilename)
-
-    def execday3(self):
-        inputfilename = self.makefilepath("day3input.txt")
-        return day3.textonly(inputfilename)
-
-    def execday4(self):
-        key = "ckczppom"
-        return day4.textonly(key)
-
-    def execday5(self):
-        inputfilename = self.makefilepath("day5input.txt")
-        return day5.textonly(inputfilename)
-
-    def execday6(self):
-        inputfilename = self.makefilepath("day6input.txt")
-        return day6.textonly(inputfilename)
-
     def execday7(self):
         inputfilename = self.makefilepath("day7input.txt")
         return day7.textonly(inputfilename)
