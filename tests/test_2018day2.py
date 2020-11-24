@@ -1,4 +1,5 @@
 import unittest
+import pytest
 from .test_day import DayTest
 from advent.advent2018 import day2
 
@@ -23,3 +24,22 @@ class RulesTestCase(unittest.TestCase):
         self.assertFalse(day2.exactly_three_of_any_letter("abbcde"))
         self.assertFalse(day2.exactly_three_of_any_letter("aabcdd"))
         self.assertFalse(day2.exactly_three_of_any_letter("abcdee"))
+
+    def test_get_common_chars(self):
+        self.assertEqual(day2.get_common_chars("", ""), "")
+        self.assertEqual(day2.get_common_chars("abc", "dbe"), "b")
+        self.assertEqual(day2.get_common_chars("abcde", "axcye"), "ace")
+        self.assertEqual(day2.get_common_chars("fghij", "fguij"), "fgij")
+
+    def test_get_common_chars_bad_input(self):
+        with self.assertRaises(ValueError):
+            day2.get_common_chars("abc", "de")
+
+        with self.assertRaises(ValueError):
+            day2.get_common_chars("abc", "defg")
+
+
+class TestDay2(DayTest):
+    test_day = day2.Day2()
+    expected_part_1 = "4693"
+    expected_part_2 = "pebjqsalrdnckzfihvtxysomg"
