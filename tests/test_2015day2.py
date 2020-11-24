@@ -1,4 +1,5 @@
 import unittest
+import pytest
 from .test_day import DayTest
 from advent.advent2015 import day2
 
@@ -19,6 +20,7 @@ class RibbonTestCase(unittest.TestCase):
         self.assertEqual(day2.ribbon(1, 1, 10), 14)
 
 
+@pytest.mark.day
 class Day2Test(DayTest):
     test_day = day2.Day2()
     expected_part_1 = "1588178"

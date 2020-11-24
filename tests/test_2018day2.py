@@ -39,6 +39,7 @@ class RulesTestCase(unittest.TestCase):
             day2.get_common_chars("abc", "defg")
 
 
+@pytest.mark.day
 class TestDay2(DayTest):
     test_day = day2.Day2()
     expected_part_1 = "4693"

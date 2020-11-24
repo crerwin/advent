@@ -1,8 +1,10 @@
 import unittest
+import pytest
 from .test_day import DayTest
 from advent.advent2015 import day1
 
 
+@pytest.mark.day
 class Day1Test(DayTest):
     test_day = day1.Day1()
     expected_part_1 = "232"

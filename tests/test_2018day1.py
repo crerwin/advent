@@ -1,4 +1,5 @@
 import unittest
+import pytest
 from .test_day import DayTest
 from advent.advent2018 import day1
 
@@ -25,6 +26,7 @@ class WalkTestCase(unittest.TestCase):
         )
 
 
+@pytest.mark.day
 class Day1Test(DayTest):
     test_day = day1.Day1()
     expected_part_1 = "561"

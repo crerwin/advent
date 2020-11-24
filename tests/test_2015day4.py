@@ -1,4 +1,5 @@
 import unittest
+import pytest
 from tests.test_day import DayTest
 from advent.advent2015 import day4
 
@@ -28,10 +29,11 @@ class FindValidHashCase(unittest.TestCase):
     def test_findhash_case_1(self):
         self.assertEqual(day4.findvalidhash("abcdef"), "609043")
 
-    def test_findhash_case_1(self):
+    def test_findhash_case_2(self):
         self.assertEqual(day4.findvalidhash("pqrstuv"), "1048970")
 
 
+@pytest.mark.day
 class Day4Test(DayTest):
     test_day = day4.Day4()
     expected_part_1 = "117946"

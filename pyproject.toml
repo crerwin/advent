@@ -19,3 +19,8 @@ flake8 = "^3.8.4"
 
 [tool.poetry.scripts]
 advent = "advent.advent:advent"
+
+[tool.pytest.ini_options]
+markers = [
+    "day: Integration test of Day objects with real input"
+]
