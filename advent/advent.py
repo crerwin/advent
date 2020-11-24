@@ -27,15 +27,32 @@ class AdventCalendar(object):
         else:
             return f"Day {day} not yet implemented for year {year}."
 
+    def show(self):
+        for k in self.days:
+            print(k)
+            for d in self.days[k]:
+                print(f"  Day {d}")
+
 
 def _run(year, day, part):
     advent_calendar = AdventCalendar()
     print(advent_calendar.run_day(year, day, part))
 
 
-@click.command()
+@click.group()
+def advent():
+    pass
+
+
+@advent.command()
 @click.option("--year", "-y", default=2015, type=int)
 @click.option("--day", "-d", default=1, type=int)
 @click.option("--part", "-p", default=1, type=int)
-def advent(year, day, part):
+def run(year, day, part):
     _run(year, day, part)
+
+
+@advent.command()
+def show():
+    advent_calendar = AdventCalendar()
+    advent_calendar.show()
