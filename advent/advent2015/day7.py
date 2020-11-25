@@ -200,7 +200,8 @@ class BreadBoard:
         return self.components[key]
 
     def _get_or_create_wire(self, key, input_connection=None):
-        # utility function to return a wire if it exists, or create and return it if it doesn't
+        # utility function to return a wire if it exists, or create and return it if it
+        # doesn't
         if key in self.components:
             if self.get_component(key).input_connection is None:
                 self.get_component(key).connect_input(input_connection)

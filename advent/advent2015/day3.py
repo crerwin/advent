@@ -37,9 +37,10 @@ class Person:
 
 
 class Dispatcher(Person):
-    # dispatcher is a class that 'impersonates' a person.  It keeps track of who is moving (Santa or RoboSanta)
-    # and coords is masked so that when the calling function asks, it gets the correct set of coords
-    # this assumes coords is asked for after moving.  Changing that would require refactoring.
+    # dispatcher is a class that 'impersonates' a person.  It keeps track of who is
+    # moving (Santa or RoboSanta) and coords is masked so that when the calling function
+    # asks, it gets the correct set of coords this assumes coords is asked for after
+    # moving.  Changing that would require refactoring.
 
     def __init__(self):
         self.santa = Person()

@@ -23,10 +23,10 @@ class People:
         else:
             return self.add_person(name)
 
-    def get_person(name):
+    def get_person(self, name):
         return self.people[name]
 
-    def add_person(name):
+    def add_person(self, name):
         self.people[name] = Person(name)
         return self.people[name]
 

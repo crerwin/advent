@@ -1,4 +1,3 @@
-import unittest
 import pytest
 from tests.test_day import DayTest
 from advent.advent2015 import day8
