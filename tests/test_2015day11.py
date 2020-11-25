@@ -114,6 +114,7 @@ class PasswordTestCase(unittest.TestCase):
         self.test_password.find_next_password()
         self.assertEqual("ghjaabcc", self.test_password.get_password())
 
+
 @pytest.mark.day
 class Day11Test(DayTest):
     test_day = day11.Day11()
