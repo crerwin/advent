@@ -1,4 +1,15 @@
-# module day10
+from advent.day import Day
+
+
+class Day10(Day):
+    year = 2015
+    day = 10
+
+    def _part1(self):
+        return len(iterate(self.input(), 40))
+
+    def _part2(self):
+        return len(iterate(self.input(), 50))
 
 
 def lookAndSay(input):

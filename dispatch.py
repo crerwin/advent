@@ -12,17 +12,6 @@ class Dispatcher:
     def makefilepath(self, filename):
         return os.path.join("inputs", filename)
 
-    def execday7(self):
-        inputfilename = self.makefilepath("day7input.txt")
-        return day7.textonly(inputfilename)
-
-    def execday8(self):
-        inputfilename = self.makefilepath("day8input.txt")
-        return day8.textonly(inputfilename)
-
-    def execday10(self):
-        return len(day10.iterate("3113322113", 50))
-
     def execday11(self):
         pw = day11.password("vzbxkghb")
         pw.find_next_password()
