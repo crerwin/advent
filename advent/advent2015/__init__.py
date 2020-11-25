@@ -6,5 +6,6 @@ from .day5 import Day5
 from .day6 import Day6
 from .day8 import Day8
 from .day10 import Day10
+from .day11 import Day11
 
-days = {1: Day1, 2: Day2, 3: Day3, 4: Day4, 5: Day5, 6: Day6, 8: Day8, 10: Day10}
+days = {1: Day1, 2: Day2, 3: Day3, 4: Day4, 5: Day5, 6: Day6, 8: Day8, 10: Day10, 11: Day11}

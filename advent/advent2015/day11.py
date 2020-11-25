@@ -1,7 +1,23 @@
-# module day11
+from advent.day import Day
 
 
-class password:
+class Day11(Day):
+    year = 2015
+    day = 11
+
+    def _part1(self):
+        pw = Password(self.input())
+        pw.find_next_password()
+        return pw.get_password()
+
+    def _part2(self):
+        pw = Password(self.input())
+        pw.find_next_password()
+        pw.find_next_password()
+        return pw.get_password()
+
+
+class Password:
     def __init__(self, password_value):
         if len(password_value) == 8:
             self.password_value = password_value.lower()

@@ -1,8 +1,15 @@
+inputs = {
+    2015: {
+        4: "ckczppom",
+        10: "3113322113",
+        11: "vzbxkghb"
+    }
+}
+
+
 def get_input(year, day):
-    if year == 2015 and day == 4:
-        return "ckczppom"
-    elif year == 2015 and day == 10:
-        return "3113322113"
+    if year in inputs and day in inputs[year]:
+        return inputs[year][day]
     else:
         f = open(f"inputs/{year}/day{day}input.txt")
         return f.read()
