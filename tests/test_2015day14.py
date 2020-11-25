@@ -1,4 +1,6 @@
 import unittest
+import pytest
+from tests.test_day import DayTest
 from advent.advent2015 import day14
 
 
@@ -39,3 +41,10 @@ class RaceRunTestCase(unittest.TestCase):
         self.reindeer2 = day14.Reindeer(16, 11, 162, "Dancer")
         self.race = day14.Race([self.reindeer1, self.reindeer2])
         self.assertEqual(self.reindeer1.name, self.race.run(1000)[0])
+
+
+@pytest.mark.day
+class Day14Test(DayTest):
+    test_day = day14.Day14()
+    expected_part_1 = "2655"
+    expected_part_2 = "1059"

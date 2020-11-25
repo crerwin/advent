@@ -1,4 +1,17 @@
-# module day14
+from advent.day import Day
+
+
+class Day14(Day):
+    year = 2015
+    day = 14
+
+    def _part1(self):
+        race = OfficialRace()
+        return race.run()[1]
+
+    def _part2(self):
+        race = Part2Race()
+        return race.run()[1]
 
 
 class Reindeer:
