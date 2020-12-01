@@ -59,4 +59,4 @@ class SmallFabricTestCase(unittest.TestCase):
 class TestDay3(DayTest):
     test_day = day3.Day3()
     expected_part_1 = "107820"
-    expected_part_2 = ""
+    expected_part_2 = "661"

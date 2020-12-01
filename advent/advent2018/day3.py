@@ -16,7 +16,11 @@ class Day3(Day):
         return fabric.get_num_squares_in_overlap()
 
     def _part2(self):
-        return ""
+        fabric = Fabric()
+        input = self.input().splitlines()
+        for line in input:
+            fabric.add_claim(get_claim(line))
+        return fabric.find_pristine_claim()
 
 
 class Fabric(object):
@@ -24,6 +28,7 @@ class Fabric(object):
         logger.debug(f"initializing fabric of size {size}")
         self.size = size
         self.squares = [[0 for i in range(self.size)] for i in range(self.size)]
+        self.claims = []
 
     def add_claim(self, claim):
         logger.debug(f"adding claim {claim.x},{claim.y} {claim.width}x{claim.height}")
@@ -38,6 +43,7 @@ class Fabric(object):
         for i in range(claim.x, max_x):
             for j in range(claim.y, max_y):
                 self.squares[i][j] += 1
+        self.claims.append(claim)
 
     def get_num_squares_in_overlap(self):
         count = 0
@@ -54,6 +60,24 @@ class Fabric(object):
             print()
             for j in range(self.size):
                 print(self.squares[i][j], end=" ")
+
+    def find_pristine_claim(self):
+        for claim in self.claims:
+            max_x = claim.x + claim.width
+            max_y = claim.y + claim.height
+            if max_x > self.size:
+                logger.debug("claim width exceeds fabric boundary.")
+                max_x = self.size
+            if max_y > self.size:
+                logger.debug("claim height exceeds fabric boundary.")
+                max_y = self.size
+            pristine = True
+            for i in range(claim.x, max_x):
+                for j in range(claim.y, max_y):
+                    if self.squares[i][j] != 1:
+                        pristine = False
+            if pristine:
+                return claim.claim_id
 
 
 class Claim(object):
