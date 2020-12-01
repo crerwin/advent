@@ -1,4 +1,4 @@
-inputs = {2015: {4: "ckczppom", 10: "3113322113", 11: "vzbxkghb"}}
+inputs = {2015: {4: "ckczppom", 10: "3113322113", 11: "vzbxkghb"}, 2017: {3: "277678"}}
 
 
 def get_input(year, day):
