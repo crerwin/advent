@@ -1,4 +1,6 @@
 import click
+import logging
+import sys
 from advent import (
     advent2015,
     advent2016,
@@ -7,6 +9,8 @@ from advent import (
     advent2019,
     advent2020,
 )
+
+logger = logging.getLogger("advent")
 
 
 class AdventCalendar(object):
@@ -40,8 +44,18 @@ def _run(year, day, part):
 
 
 @click.group()
-def advent():
-    pass
+@click.option("--debug", is_flag=True)
+def advent(debug):
+    if debug:
+        logger.setLevel(logging.DEBUG)
+    else:
+        logger.setLevel(logging.INFO)
+    ch = logging.StreamHandler()
+    formatter = logging.Formatter(
+        "%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+    )
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
 
 
 @advent.command()
@@ -49,6 +63,7 @@ def advent():
 @click.option("--day", "-d", default=1, type=int)
 @click.option("--part", "-p", default=1, type=int)
 def run(year, day, part):
+    logger.debug(f"Running year: {year} day: {day} part: {part}")
     _run(year, day, part)
 
 
