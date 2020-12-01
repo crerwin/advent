@@ -27,7 +27,7 @@ class MazeRunner(object):
         for line in steplist:
             try:
                 steplist_ints.append(int(line))
-            except:
+            except ValueError:
                 next
         return steplist_ints
 
