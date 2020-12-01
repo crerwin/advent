@@ -13,5 +13,5 @@ class GetProdTestCase(unittest.TestCase):
 @pytest.mark.day
 class TestDay1(DayTest):
     test_day = day1.Day1()
-    expected_part_1 = ""
-    expected_part_2 = ""
+    expected_part_1 = "145875"
+    expected_part_2 = "69596112"

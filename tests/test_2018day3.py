@@ -11,8 +11,8 @@ class GetClaimTestCase(unittest.TestCase):
         self.assertEqual(result.claim_id, 123)
         self.assertEqual(result.x, 3)
         self.assertEqual(result.y, 2)
-        self.assertEqual(result.height, 5)
-        self.assertEqual(result.width, 4)
+        self.assertEqual(result.height, 4)
+        self.assertEqual(result.width, 5)
 
     def test_get_bad_claim(self):
         with self.assertRaises(ValueError):
@@ -47,9 +47,16 @@ class SmallFabricTestCase(unittest.TestCase):
         self.test_fabric.show()
         self.assertEqual(self.test_fabric.get_num_squares_in_overlap(), 4)
 
+    def test_three_claims_with_get_claim(self):
+        self.test_fabric.add_claim(day3.get_claim("#1 @ 1,3: 4x4"))
+        self.test_fabric.add_claim(day3.get_claim("#2 @ 3,1: 4x4"))
+        self.test_fabric.add_claim(day3.get_claim("#3 @ 5,5: 2x2"))
+        self.test_fabric.show()
+        self.assertEqual(self.test_fabric.get_num_squares_in_overlap(), 4)
+
 
 @pytest.mark.day
 class TestDay3(DayTest):
     test_day = day3.Day3()
-    expected_part_1 = ""
+    expected_part_1 = "107820"
     expected_part_2 = ""

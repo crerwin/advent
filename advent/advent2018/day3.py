@@ -81,4 +81,4 @@ def get_claim(input: str) -> Claim:
     width = int(dims[0])
     height = int(dims[1])
 
-    return Claim(id, x, y, width, height)
+    return Claim(id, x, y, height, width)
