@@ -53,7 +53,7 @@ def criteria4(input):
     listofstringpairs = []
     for char1, char2 in zip(input[::1], input[1::1]):
         tempstring = char1 + char2
-        if tempstring in listofstringpairs[0:len(listofstringpairs) - 1]:
+        if tempstring in listofstringpairs[0 : len(listofstringpairs) - 1]:
             return True
         else:
             listofstringpairs.append(tempstring)
