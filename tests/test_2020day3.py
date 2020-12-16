@@ -42,4 +42,10 @@ class Day3TestCase(unittest.TestCase):
         self.assertEqual(3, test_day.ski(5, 1))
         self.assertEqual(4, test_day.ski(7, 1))
         self.assertEqual(2, test_day.ski(1, 2))
-        
+
+     
+@pytest.mark.day
+class TestDay2(DayTest):
+    test_day = day3.Day3()
+    expected_part_1 = "244"
+    expected_part_2 = "9406609920"
