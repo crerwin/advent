@@ -16,7 +16,6 @@ poetry run pytest test/test_day10.py
 ```
 
 ## Executing
-Specify the day number as the first (and only) argument
 ```
-poetry run python advent.py 10
+poetry run advent run -y 2020 -d 3 -p 1
 ```
