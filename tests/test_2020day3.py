@@ -7,16 +7,8 @@ from advent.advent2020 import day3
 
 class Day3TestCase(unittest.TestCase):
     def test_load_1(self):
-        input = [
-            ".**",
-            ".*.",
-            "..."
-        ]
-        expected = [
-            [".", "*", "*"],
-            [".", "*", "."],
-            [".", ".", "."]
-        ]
+        input = [".**", ".*.", "..."]
+        expected = [[".", "*", "*"], [".", "*", "."], [".", ".", "."]]
         test_day = day3.Day3()
         test_day.load_slope(input)
         self.assertEqual(test_day.slope, expected)
@@ -33,7 +25,7 @@ class Day3TestCase(unittest.TestCase):
             ".#........#",
             "#.##...#...",
             "#...##....#",
-            ".#..#...#.#"
+            ".#..#...#.#",
         ]
         test_day = day3.Day3()
         test_day.load_slope(test_input)
@@ -43,7 +35,7 @@ class Day3TestCase(unittest.TestCase):
         self.assertEqual(4, test_day.ski(7, 1))
         self.assertEqual(2, test_day.ski(1, 2))
 
-     
+
 @pytest.mark.day
 class TestDay2(DayTest):
     test_day = day3.Day3()
