@@ -16,6 +16,7 @@ click = "*"
 black = {version = "*", allow-prereleases = true}
 pytest = "*"
 flake8 = "^3.8.4"
+pytest-xdist = "^2.5.0"
 
 [tool.poetry.scripts]
 advent = "advent.advent:advent"
