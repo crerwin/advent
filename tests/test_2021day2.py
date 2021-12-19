@@ -7,14 +7,18 @@ from advent.advent2021 import day2
 class TestDayFunctions(unittest.TestCase):
     def setUp(self) -> None:
         self.test_day = day2.Day2()
+        self.test_instructions = [
+            "forward 5",
+            "down 5",
+            "forward 8",
+            "up 3",
+            "down 8",
+            "forward 2",
+        ]
 
     def test_valid_instruction(self):
-        self.assertTrue(self.test_day.valid_instruction("forward 5"))
-        self.assertTrue(self.test_day.valid_instruction("down 5"))
-        self.assertTrue(self.test_day.valid_instruction("forward 8"))
-        self.assertTrue(self.test_day.valid_instruction("up 3"))
-        self.assertTrue(self.test_day.valid_instruction("down 8"))
-        self.assertTrue(self.test_day.valid_instruction("forward 2"))
+        for instruction in self.test_instructions:
+            self.assertTrue(self.test_day.valid_instruction(instruction))
 
         self.assertFalse(self.test_day.valid_instruction("forward 5 hi"))
         self.assertFalse(self.test_day.valid_instruction("back 3"))
@@ -22,28 +26,49 @@ class TestDayFunctions(unittest.TestCase):
         self.assertFalse(self.test_day.valid_instruction("forward hi"))
         self.assertFalse(self.test_day.valid_instruction("forward three"))
 
-    def test_move_submarine(self):
-        self.test_day.move_submarine("forward 5")
-        self.assertEqual(self.test_day.horizontal_position, 5)
-        self.assertEqual(self.test_day.depth, 0)
-
-        self.test_day.move_submarine("down 5")
-        self.assertEqual(self.test_day.horizontal_position, 5)
-        self.assertEqual(self.test_day.depth, 5)
-
-        self.test_day.move_submarine("forward 8")
-        self.assertEqual(self.test_day.horizontal_position, 13)
-        self.assertEqual(self.test_day.depth, 5)
-
-        self.test_day.move_submarine("up 3")
-        self.assertEqual(self.test_day.horizontal_position, 13)
-        self.assertEqual(self.test_day.depth, 2)
-
-        self.test_day.move_submarine("down 8")
-        self.assertEqual(self.test_day.horizontal_position, 13)
-        self.assertEqual(self.test_day.depth, 10)
-
-        self.test_day.move_submarine("forward 2")
-        self.assertEqual(self.test_day.horizontal_position, 15)
-        self.assertEqual(self.test_day.depth, 10)
+    def test_move_submarine_part_1(self):
+        expected_positions = [(5, 0), (5, 5), (13, 5), (13, 2), (13, 10), (15, 10)]
+        instruction_count = 0
+        for instruction in self.test_instructions:
+            self.test_day.move_submarine(instruction)
+            self.assertEqual(
+                self.test_day.horizontal_position,
+                expected_positions[instruction_count][0],
+            )
+            self.assertEqual(
+                self.test_day.depth, expected_positions[instruction_count][1]
+            )
+            instruction_count += 1
         self.assertEqual(self.test_day.get_position_product(), 150)
+
+    def test_move_submarine_part_2(self):
+        expected_positions = [
+            (5, 0, 0),
+            (5, 0, 5),
+            (13, 40, 5),
+            (13, 40, 2),
+            (13, 40, 10),
+            (15, 60, 10),
+        ]
+        instruction_count = 0
+        for instruction in self.test_instructions:
+            self.test_day.move_submarine(instruction, part=2)
+            self.assertEqual(
+                self.test_day.horizontal_position,
+                expected_positions[instruction_count][0],
+            )
+            self.assertEqual(
+                self.test_day.depth, expected_positions[instruction_count][1]
+            )
+            self.assertEqual(
+                self.test_day.aim, expected_positions[instruction_count][2]
+            )
+            instruction_count += 1
+        self.assertEqual(self.test_day.get_position_product(), 900)
+
+
+@pytest.mark.day
+class TestDay1(DayTest):
+    test_day = day2.Day2()
+    expected_part_1 = "1561344"
+    expected_part_2 = "1848454425"
