@@ -24,3 +24,10 @@ class TestDepthIncreases(unittest.TestCase):
 
     def test_sliding_window_increases(self):
         self.assertEqual(day1.sliding_window_increases(self.test_inputs), 5)
+
+
+@pytest.mark.day
+class TestDay1(DayTest):
+    test_day = day1.Day1()
+    expected_part_1 = "1665"
+    expected_part_2 = "1702"
