@@ -17,5 +17,5 @@ poetry run pytest test/test_day10.py
 
 ## Executing
 ```
-poetry run advent run -y 2020 -d 3 -p 1
+poetry run advent run -y 2021 -d 1 -p 1
 ```
