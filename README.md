@@ -14,7 +14,7 @@ poetry install
 
 ## Test Example
 ```
-poetry run pytest test/test_day10.py
+poetry run pytest tests/test_2022day1.py
 ```
 
 ## Executing
