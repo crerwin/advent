@@ -52,6 +52,7 @@ def _run(year, day, part):
 def advent(debug):
     if debug:
         logger.setLevel(logging.DEBUG)
+        logger.debug("Debug logging on")
     else:
         logger.setLevel(logging.INFO)
     ch = logging.StreamHandler()
