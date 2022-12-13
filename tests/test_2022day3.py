@@ -3,6 +3,7 @@ import pytest
 from .test_day import DayTest
 from advent.advent2022 import day3
 
+
 @pytest.mark.day
 class TestDay3(DayTest):
     test_day = day3.Day3()
