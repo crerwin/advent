@@ -1,0 +1,10 @@
+import unittest
+import pytest
+from .test_day import DayTest
+from advent.advent{{ year }} import day{{ day }}
+
+@pytest.mark.day
+class TestDay{{ day }}(DayTest):
+    test_day = day{{ day }}.Day{{ day }}()
+    expected_part_1 = "Advent {{ year }} Day {{ day }} part 1 not yet implemented."
+    expected_part_2 = "Advent {{ year }} Day {{ day }} part 2 not yet implemented."

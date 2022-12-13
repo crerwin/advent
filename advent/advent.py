@@ -1,5 +1,6 @@
 import click
 import logging
+from .template import stubout_day
 
 from advent import (
     advent2015,
@@ -76,3 +77,10 @@ def run(year, day, part):
 def show():
     advent_calendar = AdventCalendar()
     advent_calendar.show()
+
+
+@advent.command()
+@click.option("--year", "-y", prompt="Year: ", type=int)
+@click.option("--day", "-d", prompt="Day: ", type=int)
+def stubout(year: int, day: int):
+    stubout_day(year, day)

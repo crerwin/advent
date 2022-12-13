@@ -28,7 +28,7 @@ class Day(object):
         return str(self._part2())
 
     def _part1(self):
-        return "not yet implemented"
+        return f"Advent {self.year} Day {self.day} part 1 not yet implemented."
 
     def _part2(self):
-        return "not yet implemented"
+        return f"Advent {self.year} Day {self.day} part 2 not yet implemented."

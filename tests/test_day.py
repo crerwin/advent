@@ -4,8 +4,8 @@ from advent import day
 
 class DayTest(unittest.TestCase):
     test_day = day.Day()
-    expected_part_1 = "not yet implemented"
-    expected_part_2 = "not yet implemented"
+    expected_part_1 = "Advent None Day None part 1 not yet implemented."
+    expected_part_2 = "Advent None Day None part 2 not yet implemented."
     resulting_part_1 = None
     resulting_part_2 = None
 
