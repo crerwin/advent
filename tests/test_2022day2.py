@@ -1,4 +1,5 @@
 import unittest
+import pytest
 from .test_day import DayTest
 from advent.advent2022 import day2
 
@@ -55,3 +56,10 @@ class TestOutcomeScore(unittest.TestCase):
         self.assertEqual(day2.outcome_score("A", "A"), 3)
         self.assertEqual(day2.outcome_score("B", "B"), 3)
         self.assertEqual(day2.outcome_score("C", "C"), 3)
+
+
+@pytest.mark.day
+class TestDay2(DayTest):
+    test_day = day2.Day2()
+    expected_part_1 = "11386"
+    expected_part_2 = "13600"
