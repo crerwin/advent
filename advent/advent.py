@@ -1,5 +1,6 @@
 import click
 import logging
+from .day import Day
 from .template import stubout_day
 
 from advent import (
@@ -37,10 +38,39 @@ class AdventCalendar(object):
             return f"Day {day} not yet implemented for year {year}."
 
     def show(self):
-        for k in self.days:
-            print(k)
-            for d in self.days[k]:
-                print(f"  Day {d}")
+        click.secho("Legend: ", bold=True, nl=False)
+        click.secho("Not yet implemented\t", fg="white", nl=False)
+        click.secho("Neither part\t", fg="magenta", nl=False)
+        click.secho("Part 1 only\t", fg="green", nl=False)
+        click.secho("Part 2 only\t", fg="red", nl=False)
+        click.secho("Both parts\t", fg="blue", nl=False)
+        click.secho("Star total for year", fg="yellow", nl=False)
+        # two lines
+        click.echo("\n")
+
+        for year in self.days:
+            click.secho(f"{year}: ", bold=True, nl=False)
+            stars = 0
+            for day in range(1, 26):
+                if day in self.days[year]:
+                    # if a specific day's _part1 does not equal Day._part1 (comparing attributes, not return value), then that day has implemented _part1
+                    part1_implemented = self.days[year][day]._part1 != Day._part1
+                    part2_implemented = self.days[year][day]._part2 != Day._part2
+
+                    if part1_implemented and part2_implemented:
+                        click.secho(f"{day} ", fg="blue", nl=False)
+                        stars += 2
+                    elif part1_implemented:
+                        click.secho(f"{day} ", fg="green", nl=False)
+                        stars += 1
+                    elif part2_implemented:
+                        click.secho(f"{day} ", fg="red", nl=False)
+                        stars += 1
+                    else:
+                        click.secho(f"{day} ", fg="magenta", nl=False)
+                else:
+                    click.secho(f"{day} ", fg="white", nl=False)
+            click.secho(f"\N{white medium star} {stars}", fg="yellow")
 
 
 def _run(year, day, part):
