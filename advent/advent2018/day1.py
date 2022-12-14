@@ -35,10 +35,10 @@ def walk(start, input):
 
 def find_repeated_frequency(start, input):
     location = start
-    visited_locations = []
+    visited_locations = {}
     i = 0
     while location not in visited_locations:
-        visited_locations.append(location)
+        visited_locations[location] = True
         location = step(location, input[i])
         if i >= len(input) - 1:
             i = 0
