@@ -7,10 +7,10 @@ class Day4(Day):
     year = 2015
     day = 4
 
-    def part1(self):
+    def _part1(self):
         return findvalidhash(self.input())
 
-    def part2(self):
+    def _part2(self):
         return findvalidhash(self.input(), 6)
 
 
