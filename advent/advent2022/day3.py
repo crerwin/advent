@@ -27,9 +27,5 @@ def find_common_element(string1: str, string2: str) -> str:
             common_str = ""
             for s in common_set:
                 common_str = common_str + s
-            if len(common_str) > 1:
-                raise ValueError(
-                    f"Found more than one common character in {string1} & {string2}: {common_set}"
-                )
-            else:
-                return common_str
+
+            return common_str

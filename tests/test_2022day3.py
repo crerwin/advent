@@ -20,5 +20,8 @@ class TestDay3(DayTest):
         with self.assertRaises(ValueError):
             day3.find_common_element("abc", "de")
 
+        with self.assertRaises(ValueError):
+            day3.find_common_element("abacad", "afabah")
+
         self.assertEqual("c", day3.find_common_element("abc", "dcf"))
         self.assertEqual("c", day3.find_common_element("abc", "dfc"))
