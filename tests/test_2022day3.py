@@ -7,8 +7,8 @@ from advent.advent2022 import day3
 @pytest.mark.day
 class TestDay3(DayTest):
     test_day = day3.Day3()
-    expected_part_1 = "Advent 2022 Day 3 part 1 not yet implemented."
-    expected_part_2 = "Advent 2022 Day 3 part 2 not yet implemented."
+    expected_part_1 = "8401"
+    expected_part_2 = "2641"
 
     def test_split_line(self):
         with self.assertRaises(ValueError):
@@ -22,16 +22,26 @@ class TestDay3(DayTest):
 
     def test_find_common_element(self):
         with self.assertRaises(ValueError):
-            day3.find_common_element("abc", "de")
+            day3.find_common_element(["abacad", "afabah"])
 
-        with self.assertRaises(ValueError):
-            day3.find_common_element("abacad", "afabah")
-
-        self.assertEqual("c", day3.find_common_element("abc", "dcf"))
-        self.assertEqual("c", day3.find_common_element("abc", "dfc"))
-        self.assertEqual("p", day3.find_common_element("vJrwpWtwJgWr", "hcsFMMfFFhFp"))
+        self.assertEqual("c", day3.find_common_element(["abc", "dcf"]))
+        self.assertEqual("c", day3.find_common_element(["abc", "dfc"]))
         self.assertEqual(
-            "L", day3.find_common_element("jqHRNqRjqzjGDLGL", "rsFMfFZSrLrFZsSL")
+            "p", day3.find_common_element(["vJrwpWtwJgWr", "hcsFMMfFFhFp"])
+        )
+        self.assertEqual(
+            "L", day3.find_common_element(["jqHRNqRjqzjGDLGL", "rsFMfFZSrLrFZsSL"])
+        )
+
+        self.assertEqual(
+            "r",
+            day3.find_common_element(
+                [
+                    "vJrwpWtwJgWrhcsFMMfFFhFp",
+                    "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL",
+                    "PmmdzqPrVvPwwTWBwg",
+                ]
+            ),
         )
 
     def test_get_item_priority(self):
@@ -54,3 +64,21 @@ class TestDay3(DayTest):
             "CrZsJsPPZsGzwwsLwLmpwMDw",
         ]
         self.assertEqual(157, day3.get_priorities_sum(test_data))
+
+    def test_par2_priorities_sum(self):
+        test_data = [
+            "vJrwpWtwJgWrhcsFMMfFFhFp",
+            "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL",
+            "PmmdzqPrVvPwwTWBwg",
+            "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn",
+            "ttgJtRGJQctTZtZT",
+            "CrZsJsPPZsGzwwsLwLmpwMDw",
+        ]
+
+        with self.assertRaises(ValueError):
+            day3.part2_priorities_sum(test_data[:-1])
+
+        with self.assertRaises(ValueError):
+            day3.part2_priorities_sum(["onestring"])
+
+        self.assertEqual(70, day3.part2_priorities_sum(test_data))
