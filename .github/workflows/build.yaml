@@ -30,4 +30,4 @@ jobs:
           poetry install
       - name: Unit tests
         run: |
-          poetry run pytest tests/test_{{ matrix.year }}*
+          poetry run pytest tests/test_${{ matrix.year }}*
