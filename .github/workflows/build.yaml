@@ -5,17 +5,17 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    # strategy:
-    #   matrix:
-    #     year:
-    #       - 2015
-    #       - 2016
-    #       - 2017
-    #       - 2018
-    #       - 2019
-    #       - 2020
-    #       - 2021
-    #       - 2022
+    strategy:
+      matrix:
+        year:
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
 
     steps:
       - uses: actions/checkout@v3
@@ -30,4 +30,4 @@ jobs:
           poetry install
       - name: Unit tests
         run: |
-          poetry run pytest
+          poetry run pytest tests/test_{{ matrix.year }}*
