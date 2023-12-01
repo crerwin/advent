@@ -1,7 +1,7 @@
 import click
 import logging
 from .day import Day
-from .template import stubout_day
+from .template import stubout_day, stubout_year
 
 from advent import (
     advent2015,
@@ -12,6 +12,7 @@ from advent import (
     advent2020,
     advent2021,
     advent2022,
+    advent2023,
 )
 
 logger = logging.getLogger("advent")
@@ -29,6 +30,7 @@ class AdventCalendar(object):
         self.days["2020"] = advent2020.days
         self.days["2021"] = advent2021.days
         self.days["2022"] = advent2022.days
+        self.days["2023"] = advent2023.days
 
     def run_day(self, year, day, part):
         yr = self.days[str(year)]
@@ -110,7 +112,10 @@ def show():
 
 
 @advent.command()
-@click.option("--year", "-y", prompt="Year: ", type=int)
-@click.option("--day", "-d", prompt="Day: ", type=int)
+@click.option("--year", "-y", required=True, type=int)
+@click.option("--day", "-d", type=int)
 def stubout(year: int, day: int):
-    stubout_day(year, day)
+    if day:
+        stubout_day(year, day)
+    else:
+        stubout_year(year)

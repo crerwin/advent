@@ -57,7 +57,7 @@ class NotGate(Gate):
 
     def _get_output(self):
         # bitwise compliment
-        return ~self.input + 2 ** 16
+        return ~self.input + 2**16
 
     output = property(_get_output)
 
