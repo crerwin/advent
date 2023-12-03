@@ -9,10 +9,8 @@ jobs:
     #   matrix:
     #     year:
     #       - 2015
-    #       - 2016
     #       - 2017
     #       - 2018
-    #       - 2019
     #       - 2020
     #       - 2021
     #       - 2022
@@ -29,5 +27,7 @@ jobs:
           pip install poetry
           poetry install
       - name: Unit tests
+        # run: |
+        #   poetry run pytest tests/test_${{ matrix.year }}*
         run: |
           poetry run pytest

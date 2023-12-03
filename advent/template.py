@@ -5,6 +5,35 @@ from jinja2 import Template
 logger = logging.getLogger("advent")
 
 
+def _stubout_year_structure(year: int) -> None:
+    year_dir = f"advent/advent{year}"
+    year_inputs_dir = f"inputs/{year}"
+    init_file = f"{year_dir}/__init__.py"
+
+    logger.info(f"Stubbing out year structure for {year}.")
+    if not os.path.exists(year_dir):
+        os.mkdir(year_dir)
+        logger.info(f"{year_dir} created.")
+    else:
+        logger.info(f"{year_dir} already exists.")
+
+    if not os.path.exists(year_inputs_dir):
+        os.mkdir(year_inputs_dir)
+        logger.info(f"{year_inputs_dir} created.")
+    else:
+        logger.info(f"{year_inputs_dir} already exists.")
+
+    if not os.path.exists(init_file):
+        with open("advent/templates/__init__.py.j2", "r") as file:
+            init_template = Template(file.read())
+
+        with open(init_file, "w") as output_file:
+            output_file.write(init_template.render())
+        logger.info(f"{init_file} created.")
+    else:
+        logger.info(f"{init_file} already exists.")
+
+
 def _stubout_day_code(year: int, day: int) -> None:
     day_code_file = f"advent/advent{year}/day{day}.py"
 
@@ -62,6 +91,7 @@ def _create_input_file(year: int, day: int) -> None:
 
 
 def stubout_day(year: int, day: int) -> None:
+    _stubout_year_structure(year)
     _stubout_day_code(year, day)
     _stubout_day_tests(year, day)
     _create_input_file(year, day)
@@ -69,3 +99,7 @@ def stubout_day(year: int, day: int) -> None:
     logger.info(
         f"Templating complete.  You must import the day inside advent/advent{year}/__init__.py"
     )
+
+
+def stubout_year(year: int) -> None:
+    _stubout_year_structure(year)
