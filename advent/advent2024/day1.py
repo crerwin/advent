@@ -13,6 +13,10 @@ class Day1(Day):
         self.list_b.sort()
         return self.get_total_distance_between_lists(self.list_a, self.list_b)
     
+    def _part2(self):
+        self.load_lists_from_input(self.input())
+        return self.get_similarity_score(self.list_a, self.list_b)
+    
     def reset_lists(self):
         self.list_a = []
         self.list_b = []
@@ -36,3 +40,10 @@ class Day1(Day):
                 total_distance += self.get_distance(list_a[i], list_b[i])
         
         return total_distance
+    
+    def get_similarity_score(self, list_a: list[int], list_b: list[int]) -> int:
+        similarity_score = 0
+        for number in list_a:
+            similarity_score += number * list_b.count(number)
+        
+        return similarity_score

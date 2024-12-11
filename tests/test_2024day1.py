@@ -26,6 +26,11 @@ class TestDay1(DayTest):
         test_list_b.sort()
         self.assertEqual(self.test_day.get_total_distance_between_lists(test_list_a, test_list_b), 11)
 
+    def test_get_similarity_score(self):
+        test_list_a = [3, 4, 2, 1, 3, 3]
+        test_list_b = [4, 3, 5, 3, 9, 3]
+        self.assertEqual(self.test_day.get_similarity_score(test_list_a, test_list_b), 31)
+
     def test_load_lists_from_input(self):
         self.test_day.reset_lists()
         self.assertEqual(self.test_day.list_a, [])
