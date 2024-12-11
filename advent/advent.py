@@ -13,6 +13,7 @@ from advent import (
     advent2021,
     advent2022,
     advent2023,
+    advent2024
 )
 
 logger = logging.getLogger("advent")
@@ -31,6 +32,7 @@ class AdventCalendar(object):
         self.days["2021"] = advent2021.days
         self.days["2022"] = advent2022.days
         self.days["2023"] = advent2023.days
+        self.days["2024"] = advent2024.days
 
     def run_day(self, year, day, part):
         yr = self.days[str(year)]
